@@ -1,0 +1,548 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2D6481991E66950900984550 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6481981E66950900984550 /* AppDelegate.m */; };
+		2D64819C1E66950900984550 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D64819B1E66950900984550 /* main.m */; };
+		2D64819E1E66950900984550 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D64819D1E66950900984550 /* Assets.xcassets */; };
+		2D6481A11E66950900984550 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D64819F1E66950900984550 /* MainMenu.xib */; };
+		2D6481AC1E66950A00984550 /* NekomataUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6481AB1E66950A00984550 /* NekomataUITests.m */; };
+		2D6481B91E66957400984550 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6481B71E66957400984550 /* MainWindow.m */; };
+		2D6481BA1E66957400984550 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D6481B81E66957400984550 /* MainWindow.xib */; };
+		2D6481C01E669E7900984550 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6481BE1E6697DB00984550 /* PXSourceList.framework */; };
+		2D6481C11E669E7900984550 /* PXSourceList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6481BE1E6697DB00984550 /* PXSourceList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2D6481C21E669E7900984550 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6481BC1E6695C800984550 /* Sparkle.framework */; };
+		2D6481C31E669E7900984550 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6481BC1E6695C800984550 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2DF502161E67473F008EC236 /* EasyNSURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF502151E67473F008EC236 /* EasyNSURLConnection.m */; };
+		2DF5021C1E674D1E008EC236 /* SoftwareUpdatesPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5021B1E674D1E008EC236 /* SoftwareUpdatesPref.m */; };
+		2DF5021F1E674D42008EC236 /* LoginPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5021E1E674D42008EC236 /* LoginPref.m */; };
+		2DF502211E674D4B008EC236 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DF502201E674D4B008EC236 /* LoginView.xib */; };
+		2DF502241E674D5F008EC236 /* Base64Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF502231E674D5F008EC236 /* Base64Category.m */; };
+		2DF502271E674DBF008EC236 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF502261E674DBF008EC236 /* Utility.m */; };
+		2DF502281E675040008EC236 /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF502171E674CCD008EC236 /* MASPreferences.framework */; };
+		2DF502291E675040008EC236 /* MASPreferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF502171E674CCD008EC236 /* MASPreferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2DF5022B1E675087008EC236 /* SoftwareUpdateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DF5022A1E675087008EC236 /* SoftwareUpdateView.xib */; };
+		2DF5022F1E6751CC008EC236 /* GeneralPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5022D1E6751CC008EC236 /* GeneralPref.m */; };
+		2DF502301E6751CC008EC236 /* GeneralPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DF5022E1E6751CC008EC236 /* GeneralPref.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2D6481A81E66950900984550 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D64818C1E66950900984550 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D6481931E66950900984550;
+			remoteInfo = Nekomata;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2D6481C41E669E7900984550 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2DF502291E675040008EC236 /* MASPreferences.framework in Embed Frameworks */,
+				2D6481C11E669E7900984550 /* PXSourceList.framework in Embed Frameworks */,
+				2D6481C31E669E7900984550 /* Sparkle.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2D6481941E66950900984550 /* Nekomata.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nekomata.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D6481971E66950900984550 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2D6481981E66950900984550 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2D64819B1E66950900984550 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2D64819D1E66950900984550 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2D6481A01E66950900984550 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		2D6481A21E66950900984550 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D6481A71E66950900984550 /* NekomataUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NekomataUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D6481AB1E66950A00984550 /* NekomataUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NekomataUITests.m; sourceTree = "<group>"; };
+		2D6481AD1E66950A00984550 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D6481B61E66957400984550 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
+		2D6481B71E66957400984550 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
+		2D6481B81E66957400984550 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		2D6481BC1E6695C800984550 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		2D6481BE1E6697DB00984550 /* PXSourceList.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PXSourceList.framework; sourceTree = "<group>"; };
+		2DF502141E67473F008EC236 /* EasyNSURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyNSURLConnection.h; sourceTree = "<group>"; };
+		2DF502151E67473F008EC236 /* EasyNSURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyNSURLConnection.m; sourceTree = "<group>"; };
+		2DF502171E674CCD008EC236 /* MASPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MASPreferences.framework; sourceTree = "<group>"; };
+		2DF502191E674D1E008EC236 /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
+		2DF5021A1E674D1E008EC236 /* SoftwareUpdatesPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareUpdatesPref.h; sourceTree = "<group>"; };
+		2DF5021B1E674D1E008EC236 /* SoftwareUpdatesPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareUpdatesPref.m; sourceTree = "<group>"; };
+		2DF5021D1E674D42008EC236 /* LoginPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginPref.h; sourceTree = "<group>"; };
+		2DF5021E1E674D42008EC236 /* LoginPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginPref.m; sourceTree = "<group>"; };
+		2DF502201E674D4B008EC236 /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
+		2DF502221E674D5F008EC236 /* Base64Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Category.h; sourceTree = "<group>"; };
+		2DF502231E674D5F008EC236 /* Base64Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64Category.m; sourceTree = "<group>"; };
+		2DF502251E674DBF008EC236 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		2DF502261E674DBF008EC236 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		2DF5022A1E675087008EC236 /* SoftwareUpdateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoftwareUpdateView.xib; sourceTree = "<group>"; };
+		2DF5022C1E6751CB008EC236 /* GeneralPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralPref.h; sourceTree = "<group>"; };
+		2DF5022D1E6751CC008EC236 /* GeneralPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralPref.m; sourceTree = "<group>"; };
+		2DF5022E1E6751CC008EC236 /* GeneralPref.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPref.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2D6481911E66950900984550 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DF502281E675040008EC236 /* MASPreferences.framework in Frameworks */,
+				2D6481C01E669E7900984550 /* PXSourceList.framework in Frameworks */,
+				2D6481C21E669E7900984550 /* Sparkle.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D6481A41E66950900984550 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2D64818B1E66950900984550 = {
+			isa = PBXGroup;
+			children = (
+				2D6481961E66950900984550 /* Nekomata */,
+				2D6481AA1E66950900984550 /* NekomataUITests */,
+				2D6481951E66950900984550 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2D6481951E66950900984550 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2D6481941E66950900984550 /* Nekomata.app */,
+				2D6481A71E66950900984550 /* NekomataUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2D6481961E66950900984550 /* Nekomata */ = {
+			isa = PBXGroup;
+			children = (
+				2DF502321E67537E008EC236 /* Support Classes */,
+				2DF502311E67536D008EC236 /* Preferences */,
+				2D6481BB1E6695B200984550 /* Frameworks */,
+				2D6481971E66950900984550 /* AppDelegate.h */,
+				2D6481981E66950900984550 /* AppDelegate.m */,
+				2D6481B61E66957400984550 /* MainWindow.h */,
+				2D6481B71E66957400984550 /* MainWindow.m */,
+				2DF502331E6753AA008EC236 /* Resources */,
+				2D64819A1E66950900984550 /* Supporting Files */,
+			);
+			path = Nekomata;
+			sourceTree = "<group>";
+		};
+		2D64819A1E66950900984550 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2D64819B1E66950900984550 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2D6481AA1E66950900984550 /* NekomataUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2D6481AB1E66950A00984550 /* NekomataUITests.m */,
+				2D6481AD1E66950A00984550 /* Info.plist */,
+			);
+			path = NekomataUITests;
+			sourceTree = "<group>";
+		};
+		2D6481BB1E6695B200984550 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2DF502171E674CCD008EC236 /* MASPreferences.framework */,
+				2D6481BE1E6697DB00984550 /* PXSourceList.framework */,
+				2D6481BC1E6695C800984550 /* Sparkle.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2DF502311E67536D008EC236 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				2DF502191E674D1E008EC236 /* Preferences.h */,
+				2DF5021D1E674D42008EC236 /* LoginPref.h */,
+				2DF5021E1E674D42008EC236 /* LoginPref.m */,
+				2DF5022C1E6751CB008EC236 /* GeneralPref.h */,
+				2DF5022D1E6751CC008EC236 /* GeneralPref.m */,
+				2DF5021A1E674D1E008EC236 /* SoftwareUpdatesPref.h */,
+				2DF5021B1E674D1E008EC236 /* SoftwareUpdatesPref.m */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
+		2DF502321E67537E008EC236 /* Support Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2DF502221E674D5F008EC236 /* Base64Category.h */,
+				2DF502231E674D5F008EC236 /* Base64Category.m */,
+				2DF502141E67473F008EC236 /* EasyNSURLConnection.h */,
+				2DF502151E67473F008EC236 /* EasyNSURLConnection.m */,
+				2DF502251E674DBF008EC236 /* Utility.h */,
+				2DF502261E674DBF008EC236 /* Utility.m */,
+			);
+			name = "Support Classes";
+			sourceTree = "<group>";
+		};
+		2DF502331E6753AA008EC236 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2DF502201E674D4B008EC236 /* LoginView.xib */,
+				2DF5022A1E675087008EC236 /* SoftwareUpdateView.xib */,
+				2D6481B81E66957400984550 /* MainWindow.xib */,
+				2DF5022E1E6751CC008EC236 /* GeneralPref.xib */,
+				2D64819D1E66950900984550 /* Assets.xcassets */,
+				2D64819F1E66950900984550 /* MainMenu.xib */,
+				2D6481A21E66950900984550 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2D6481931E66950900984550 /* Nekomata */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D6481B01E66950A00984550 /* Build configuration list for PBXNativeTarget "Nekomata" */;
+			buildPhases = (
+				2D6481901E66950900984550 /* Sources */,
+				2D6481911E66950900984550 /* Frameworks */,
+				2D6481921E66950900984550 /* Resources */,
+				2D6481C41E669E7900984550 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Nekomata;
+			productName = Nekomata;
+			productReference = 2D6481941E66950900984550 /* Nekomata.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2D6481A61E66950900984550 /* NekomataUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D6481B31E66950A00984550 /* Build configuration list for PBXNativeTarget "NekomataUITests" */;
+			buildPhases = (
+				2D6481A31E66950900984550 /* Sources */,
+				2D6481A41E66950900984550 /* Frameworks */,
+				2D6481A51E66950900984550 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2D6481A91E66950900984550 /* PBXTargetDependency */,
+			);
+			name = NekomataUITests;
+			productName = NekomataUITests;
+			productReference = 2D6481A71E66950900984550 /* NekomataUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2D64818C1E66950900984550 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Atelier Shiori";
+				TargetAttributes = {
+					2D6481931E66950900984550 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 9HDZTER525;
+						ProvisioningStyle = Automatic;
+					};
+					2D6481A61E66950900984550 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 9HDZTER525;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2D6481931E66950900984550;
+					};
+				};
+			};
+			buildConfigurationList = 2D64818F1E66950900984550 /* Build configuration list for PBXProject "Nekomata" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2D64818B1E66950900984550;
+			productRefGroup = 2D6481951E66950900984550 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2D6481931E66950900984550 /* Nekomata */,
+				2D6481A61E66950900984550 /* NekomataUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2D6481921E66950900984550 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D64819E1E66950900984550 /* Assets.xcassets in Resources */,
+				2DF5022B1E675087008EC236 /* SoftwareUpdateView.xib in Resources */,
+				2D6481A11E66950900984550 /* MainMenu.xib in Resources */,
+				2DF502301E6751CC008EC236 /* GeneralPref.xib in Resources */,
+				2DF502211E674D4B008EC236 /* LoginView.xib in Resources */,
+				2D6481BA1E66957400984550 /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D6481A51E66950900984550 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2D6481901E66950900984550 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DF502271E674DBF008EC236 /* Utility.m in Sources */,
+				2DF5021F1E674D42008EC236 /* LoginPref.m in Sources */,
+				2D64819C1E66950900984550 /* main.m in Sources */,
+				2DF5022F1E6751CC008EC236 /* GeneralPref.m in Sources */,
+				2D6481991E66950900984550 /* AppDelegate.m in Sources */,
+				2DF502241E674D5F008EC236 /* Base64Category.m in Sources */,
+				2DF5021C1E674D1E008EC236 /* SoftwareUpdatesPref.m in Sources */,
+				2DF502161E67473F008EC236 /* EasyNSURLConnection.m in Sources */,
+				2D6481B91E66957400984550 /* MainWindow.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D6481A31E66950900984550 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D6481AC1E66950A00984550 /* NekomataUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2D6481A91E66950900984550 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D6481931E66950900984550 /* Nekomata */;
+			targetProxy = 2D6481A81E66950900984550 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2D64819F1E66950900984550 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D6481A01E66950900984550 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2D6481AE1E66950A00984550 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		2D6481AF1E66950A00984550 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		2D6481B11E66950A00984550 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Nekomata",
+				);
+				INFOPLIST_FILE = Nekomata/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = moe.ateliershiori.Nekomata;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2D6481B21E66950A00984550 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Nekomata",
+				);
+				INFOPLIST_FILE = Nekomata/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = moe.ateliershiori.Nekomata;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2D6481B41E66950A00984550 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				INFOPLIST_FILE = NekomataUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = moe.ateliershiori.NekomataUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Nekomata;
+			};
+			name = Debug;
+		};
+		2D6481B51E66950A00984550 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				INFOPLIST_FILE = NekomataUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = moe.ateliershiori.NekomataUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Nekomata;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D64818F1E66950900984550 /* Build configuration list for PBXProject "Nekomata" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D6481AE1E66950A00984550 /* Debug */,
+				2D6481AF1E66950A00984550 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D6481B01E66950A00984550 /* Build configuration list for PBXNativeTarget "Nekomata" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D6481B11E66950A00984550 /* Debug */,
+				2D6481B21E66950A00984550 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D6481B31E66950A00984550 /* Build configuration list for PBXNativeTarget "NekomataUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D6481B41E66950A00984550 /* Debug */,
+				2D6481B51E66950A00984550 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2D64818C1E66950900984550 /* Project object */;
+}
