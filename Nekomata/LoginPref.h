@@ -9,11 +9,12 @@
 #import <Cocoa/Cocoa.h>
 #import "Preferences.h"
 #import "AppDelegate.h"
+#import <AFNetworking/AFNetworking.h>
+#import "AFOAuth2Manager.h"
+
 @interface LoginPref : NSViewController <MASPreferencesViewController> {
     IBOutlet NSImageView * logo;
 	//Login Preferences
-	IBOutlet NSTextField * fieldusername;
-	IBOutlet NSTextField * fieldpassword;
 	IBOutlet NSButton * savebut;
 	IBOutlet NSButton * clearbut;
     IBOutlet NSTextField * loggedinuser;

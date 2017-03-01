@@ -29,6 +29,16 @@
 		2DF5022B1E675087008EC236 /* SoftwareUpdateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DF5022A1E675087008EC236 /* SoftwareUpdateView.xib */; };
 		2DF5022F1E6751CC008EC236 /* GeneralPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5022D1E6751CC008EC236 /* GeneralPref.m */; };
 		2DF502301E6751CC008EC236 /* GeneralPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DF5022E1E6751CC008EC236 /* GeneralPref.xib */; };
+		2DF502381E6757FB008EC236 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF502351E6757FB008EC236 /* SSKeychain.m */; };
+		2DF502391E6757FB008EC236 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF502371E6757FB008EC236 /* SSKeychainQuery.m */; };
+		2DF5023C1E675998008EC236 /* AniList.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5023B1E675998008EC236 /* AniList.m */; };
+		2DF502451E675BC5008EC236 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF502441E675BC5008EC236 /* ClientConstants.m */; };
+		2DF502471E676523008EC236 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF502461E676523008EC236 /* AFNetworking.framework */; };
+		2DF5024F1E6765B7008EC236 /* AFHTTPRequestSerializer+OAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5024A1E6765B7008EC236 /* AFHTTPRequestSerializer+OAuth2.m */; };
+		2DF502501E6765B7008EC236 /* AFOAuth2Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5024C1E6765B7008EC236 /* AFOAuth2Manager.m */; };
+		2DF502511E6765B7008EC236 /* AFOAuthCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5024E1E6765B7008EC236 /* AFOAuthCredential.m */; };
+		2DF502521E676A71008EC236 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF502461E676523008EC236 /* AFNetworking.framework */; };
+		2DF502531E676A71008EC236 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF502461E676523008EC236 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +59,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				2DF502291E675040008EC236 /* MASPreferences.framework in Embed Frameworks */,
+				2DF502531E676A71008EC236 /* AFNetworking.framework in Embed Frameworks */,
 				2D6481C11E669E7900984550 /* PXSourceList.framework in Embed Frameworks */,
 				2D6481C31E669E7900984550 /* Sparkle.framework in Embed Frameworks */,
 			);
@@ -90,6 +101,21 @@
 		2DF5022C1E6751CB008EC236 /* GeneralPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralPref.h; sourceTree = "<group>"; };
 		2DF5022D1E6751CC008EC236 /* GeneralPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralPref.m; sourceTree = "<group>"; };
 		2DF5022E1E6751CC008EC236 /* GeneralPref.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPref.xib; sourceTree = "<group>"; };
+		2DF502341E6757FB008EC236 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
+		2DF502351E6757FB008EC236 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
+		2DF502361E6757FB008EC236 /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
+		2DF502371E6757FB008EC236 /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychainQuery.m; sourceTree = "<group>"; };
+		2DF5023A1E675998008EC236 /* AniList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AniList.h; sourceTree = "<group>"; };
+		2DF5023B1E675998008EC236 /* AniList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AniList.m; sourceTree = "<group>"; };
+		2DF502431E675BC5008EC236 /* ClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClientConstants.h; path = Nekomata/ClientConstants.h; sourceTree = "<group>"; };
+		2DF502441E675BC5008EC236 /* ClientConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClientConstants.m; path = Nekomata/ClientConstants.m; sourceTree = "<group>"; };
+		2DF502461E676523008EC236 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = "<group>"; };
+		2DF502491E6765B7008EC236 /* AFHTTPRequestSerializer+OAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPRequestSerializer+OAuth2.h"; sourceTree = "<group>"; };
+		2DF5024A1E6765B7008EC236 /* AFHTTPRequestSerializer+OAuth2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPRequestSerializer+OAuth2.m"; sourceTree = "<group>"; };
+		2DF5024B1E6765B7008EC236 /* AFOAuth2Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFOAuth2Manager.h; sourceTree = "<group>"; };
+		2DF5024C1E6765B7008EC236 /* AFOAuth2Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFOAuth2Manager.m; sourceTree = "<group>"; };
+		2DF5024D1E6765B7008EC236 /* AFOAuthCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFOAuthCredential.h; sourceTree = "<group>"; };
+		2DF5024E1E6765B7008EC236 /* AFOAuthCredential.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFOAuthCredential.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +124,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DF502281E675040008EC236 /* MASPreferences.framework in Frameworks */,
+				2DF502521E676A71008EC236 /* AFNetworking.framework in Frameworks */,
+				2DF502471E676523008EC236 /* AFNetworking.framework in Frameworks */,
 				2D6481C01E669E7900984550 /* PXSourceList.framework in Frameworks */,
 				2D6481C21E669E7900984550 /* Sparkle.framework in Frameworks */,
 			);
@@ -116,6 +144,8 @@
 		2D64818B1E66950900984550 = {
 			isa = PBXGroup;
 			children = (
+				2DF502431E675BC5008EC236 /* ClientConstants.h */,
+				2DF502441E675BC5008EC236 /* ClientConstants.m */,
 				2D6481961E66950900984550 /* Nekomata */,
 				2D6481AA1E66950900984550 /* NekomataUITests */,
 				2D6481951E66950900984550 /* Products */,
@@ -139,6 +169,8 @@
 				2D6481BB1E6695B200984550 /* Frameworks */,
 				2D6481971E66950900984550 /* AppDelegate.h */,
 				2D6481981E66950900984550 /* AppDelegate.m */,
+				2DF5023A1E675998008EC236 /* AniList.h */,
+				2DF5023B1E675998008EC236 /* AniList.m */,
 				2D6481B61E66957400984550 /* MainWindow.h */,
 				2D6481B71E66957400984550 /* MainWindow.m */,
 				2DF502331E6753AA008EC236 /* Resources */,
@@ -167,6 +199,7 @@
 		2D6481BB1E6695B200984550 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2DF502461E676523008EC236 /* AFNetworking.framework */,
 				2DF502171E674CCD008EC236 /* MASPreferences.framework */,
 				2D6481BE1E6697DB00984550 /* PXSourceList.framework */,
 				2D6481BC1E6695C800984550 /* Sparkle.framework */,
@@ -191,6 +224,11 @@
 		2DF502321E67537E008EC236 /* Support Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2DF502481E6765AB008EC236 /* AFNetworking */,
+				2DF502341E6757FB008EC236 /* SSKeychain.h */,
+				2DF502351E6757FB008EC236 /* SSKeychain.m */,
+				2DF502361E6757FB008EC236 /* SSKeychainQuery.h */,
+				2DF502371E6757FB008EC236 /* SSKeychainQuery.m */,
 				2DF502221E674D5F008EC236 /* Base64Category.h */,
 				2DF502231E674D5F008EC236 /* Base64Category.m */,
 				2DF502141E67473F008EC236 /* EasyNSURLConnection.h */,
@@ -213,6 +251,19 @@
 				2D6481A21E66950900984550 /* Info.plist */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		2DF502481E6765AB008EC236 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				2DF502491E6765B7008EC236 /* AFHTTPRequestSerializer+OAuth2.h */,
+				2DF5024A1E6765B7008EC236 /* AFHTTPRequestSerializer+OAuth2.m */,
+				2DF5024B1E6765B7008EC236 /* AFOAuth2Manager.h */,
+				2DF5024C1E6765B7008EC236 /* AFOAuth2Manager.m */,
+				2DF5024D1E6765B7008EC236 /* AFOAuthCredential.h */,
+				2DF5024E1E6765B7008EC236 /* AFOAuthCredential.m */,
+			);
+			name = AFNetworking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,15 +374,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DF5023C1E675998008EC236 /* AniList.m in Sources */,
+				2DF502511E6765B7008EC236 /* AFOAuthCredential.m in Sources */,
+				2DF502501E6765B7008EC236 /* AFOAuth2Manager.m in Sources */,
 				2DF502271E674DBF008EC236 /* Utility.m in Sources */,
+				2DF502451E675BC5008EC236 /* ClientConstants.m in Sources */,
+				2DF502391E6757FB008EC236 /* SSKeychainQuery.m in Sources */,
 				2DF5021F1E674D42008EC236 /* LoginPref.m in Sources */,
 				2D64819C1E66950900984550 /* main.m in Sources */,
 				2DF5022F1E6751CC008EC236 /* GeneralPref.m in Sources */,
 				2D6481991E66950900984550 /* AppDelegate.m in Sources */,
+				2DF5024F1E6765B7008EC236 /* AFHTTPRequestSerializer+OAuth2.m in Sources */,
 				2DF502241E674D5F008EC236 /* Base64Category.m in Sources */,
 				2DF5021C1E674D1E008EC236 /* SoftwareUpdatesPref.m in Sources */,
 				2DF502161E67473F008EC236 /* EasyNSURLConnection.m in Sources */,
 				2D6481B91E66957400984550 /* MainWindow.m in Sources */,
+				2DF502381E6757FB008EC236 /* SSKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +514,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -473,6 +532,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				FRAMEWORK_SEARCH_PATHS = (

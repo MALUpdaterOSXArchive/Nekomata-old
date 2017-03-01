@@ -8,12 +8,16 @@
 
 #import "AppDelegate.h"
 #import "Preferences.h"
+#import "ClientConstants.h"
 
 @interface AppDelegate ()
 @end
 
 @implementation AppDelegate
++(void)initialize{
 
+    
+}
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 
     // Load main window

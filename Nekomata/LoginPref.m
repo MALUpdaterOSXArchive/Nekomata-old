@@ -8,6 +8,7 @@
 
 #import "LoginPref.h"
 #import "Base64Category.h"
+#import "ClientConstants.h"
 #import "AppDelegate.h"
 
 #import "EasyNSURLConnection.h"
@@ -53,58 +54,56 @@
 #pragma mark Login Preferences Functions
 -(void)loadlogin
 {
-	/*// Load Username
-	if ([MALEngine checkaccount]) {
+    AFOAuthCredential *credential =
+    [AFOAuthCredential retrieveCredentialWithIdentifier:@"Nekomata"];
+	// Load Username
+	if (credential.accessToken) {
 		[clearbut setEnabled: YES];
 		[savebut setEnabled: NO];
         [loggedinview setHidden:NO];
         [loginview setHidden:YES];
-        [loggedinuser setStringValue:[MALEngine getusername]];
+        //[loggedinuser setStringValue:[MALEngine getusername]];
 	}
 	else {
 		//Disable Clearbut
 		[clearbut setEnabled: NO];
 		[savebut setEnabled: YES];
-	}*/
+	}
 }
 -(IBAction)startlogin:(id)sender
 {
-	{
-		//Start Login Process
-		//Disable Login Button
-		[savebut setEnabled: NO];
-		[savebut displayIfNeeded];
-		if ( [[fieldusername stringValue] length] == 0) {
-			//No Username Entered! Show error message
-			[Utility showsheetmessage:@"Nekomata was unable to log you in since you didn't enter a username" explaination:@"Enter a valid username and try logging in again" window:[[self view] window]];
-			[savebut setEnabled: YES];
-		}
-		else {
-			if ( [[fieldpassword stringValue] length] == 0 ) {
-				//No Password Entered! Show error message.
-				[Utility showsheetmessage:@"Nekomata was unable to log you in since you didn't enter a password" explaination:@"Enter a valid password and try logging in again." window:[[self view] window]];
-				[savebut setEnabled: YES];
-			}
-			else {
-                    [self login:[fieldusername stringValue] password:[fieldpassword stringValue]];
-                }
-		}
-	}
+    // Open Authorization Page to allow user to get the pin needed to finish the process
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/api/auth/authorize?grant_type=authorization_pin&client_id=%@&response_type=pin",kclient]]];
+    [NSApp beginSheet:self.loginpanel
+       modalForWindow:[[self view] window] modalDelegate:self
+       didEndSelector:@selector(reAuthPanelDidEnd:returnCode:contextInfo:)
+          contextInfo:(void *)nil];
+
+    
 }
--(void)login:(NSString *)username password:(NSString *)password{
-    //Set Login URL
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/1/account/verify_credentials", [defaults objectForKey:@"MALAPIURL"]]];
-    EasyNSURLConnection *request = [[EasyNSURLConnection alloc] initWithURL:url];
-	//Ignore Cookies
-	[request setUseCookies:NO];
-	//Set Username and Password
-    [request addHeader:[NSString stringWithFormat:@"Basic %@", [[NSString stringWithFormat:@"%@:%@", username, password] base64Encoding]] forKey:@"Authorization"];
-	//Verify Username/Password
-	[request startRequest];
-	// Check for errors
-    NSError * error = [request getError];
-    if ([request getStatusCode] == 200 && error == nil) {
+-(void)login:(NSString *)pin{
+    NSURL *baseURL = [NSURL URLWithString:@"https://anilist.co/api/"];
+    AFOAuth2Manager *OAuth2Manager =
+    [[AFOAuth2Manager alloc] initWithBaseURL:baseURL
+                                    clientID:kclient
+                                      secret:ksecretkey];
+    [OAuth2Manager authenticateUsingOAuthWithURLString:@"auth/access_token" parameters:@{@"grant_type":@"authorization_pin", @"code":pin} success:^(AFOAuthCredential *credential) {
+        NSLog(@"Token: %@", credential.accessToken);
+        [Utility showsheetmessage:@"Login Successful" explaination: @"Login is successful." window:[[self view] window]];
+        [AFOAuthCredential storeCredential:credential
+                            withIdentifier:@"Nekomata"];
+        [clearbut setEnabled: YES];
+        //[loggedinuser setStringValue:username];
+        [loggedinview setHidden:NO];
+        [loginview setHidden:YES];
+
+        
+    }
+                                               failure:^(NSError *error) {
+                                                   NSLog(@"Error: %@", error);
+                                                   [Utility showsheetmessage:@"Nekomata was unable to log you in since the pin is invalid." explaination:@"Make sure you copied the pin correctly." window:[[self view] window]];
+                                               }];
+    /*if ([request getStatusCode] == 200 && error == nil) {
         //Login successful
         [Utility showsheetmessage:@"Login Successful" explaination: @"Login is successful." window:[[self view] window]];
 		// Store account in login keychain
@@ -125,13 +124,14 @@
             [Utility showsheetmessage:@"Nekomata was unable to log you in since you don't have the correct username and/or password." explaination:@"Check your username and password and try logging in again. If you recently changed your password, enter your new password and try again." window:[[self view] window]];
             [savebut setEnabled: YES];
             [savebut setKeyEquivalent:@"\r"];
-        }
-    }
+        }    
+     }*/
+
 }
 -(IBAction)registermal:(id)sender
 {
 	//Show MAL Registration Page
-	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://myanimelist.net/register.php"]];
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://anilist.co/register"]];
 }
 -(IBAction) showgettingstartedpage:(id)sender
 {
@@ -150,35 +150,28 @@
         [alert setAlertStyle:NSAlertStyleWarning];
         if ([alert runModal]== NSAlertFirstButtonReturn) {
             //Remove account from keychain
-           // [MALEngine removeaccount];
+            [AFOAuthCredential retrieveCredentialWithIdentifier:@"Nekomata"];
             //Disable Clearbut
             [clearbut setEnabled: NO];
             [savebut setEnabled: YES];
             [loggedinuser setStringValue:@""];
             [loggedinview setHidden:YES];
             [loginview setHidden:NO];
-            [fieldusername setStringValue:@""];
-            [fieldpassword setStringValue:@""];
         }
 }
 /*
- Reauthorization Panel
+Pin Panel
  */
--(IBAction)reauthorize:(id)sender{
-        [NSApp beginSheet:self.loginpanel
-           modalForWindow:[[self view] window] modalDelegate:self
-           didEndSelector:@selector(reAuthPanelDidEnd:returnCode:contextInfo:)
-              contextInfo:(void *)nil];
-}
 - (void)reAuthPanelDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
     if (returnCode == 1) {
-        [self login: (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:@"Username"] password:[passwordinput stringValue]];
+        [self login:[passwordinput stringValue]];
     }
     //Reset and Close
     [passwordinput setStringValue:@""];
     [invalidinput setHidden:YES];
     [self.loginpanel close];
 }
+
 -(IBAction)cancelreauthorization:(id)sender{
     [self.loginpanel orderOut:self];
     [NSApp endSheet:self.loginpanel returnCode:0];
