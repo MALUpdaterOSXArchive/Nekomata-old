@@ -13,7 +13,7 @@
 @end
 
 @implementation MainWindow
-@synthesize  app;
+
 -(id)init{
     self = [super initWithWindowNibName:@"MainWindow"];
     if(!self)
@@ -78,12 +78,12 @@
 }
 
 -(void)setDelegate:(AppDelegate*) adelegate{
-    app = adelegate;
+    appdel = adelegate;
 }
+
 - (void)windowWillClose:(NSNotification *)notification{
     [[NSApplication sharedApplication] terminate:0];
 }
-
 #pragma mark -
 #pragma mark Source List Data Source Methods
 
@@ -237,6 +237,32 @@
         [_toolbar insertItemWithItemIdentifier:@"seasonselect" atIndex:2];
         [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:3];
     }
+}
+-(NSString *)getToken{
+    AFOAuthCredential *credential =
+    [AFOAuthCredential retrieveCredentialWithIdentifier:@"Nekomata"];
+    if (credential.accessToken){
+        return credential.accessToken;
+    }
+    return nil;
+    
+}
+// Search
+- (IBAction)performsearch:(id)sender {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:[NSString stringWithFormat:@"https://anilist.co/api/anime/search/%@",[Utility urlEncodeString:searchtitlefield.stringValue]] parameters:@{@"access_token":[self getToken]} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [self populatesearchtb:responseObject];
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+    
+   }
+-(void)populatesearchtb:(NSArray*)json{
+    NSMutableArray * a = [searcharraycontroller content];
+    [a removeAllObjects];
+    [searcharraycontroller addObjects:json];
+    [searchtb reloadData];
+    [searchtb deselectAll:self];
 }
 @end
 

@@ -8,13 +8,19 @@
 
 #import <Cocoa/Cocoa.h>
 #import <PXSourceList/PXSourceList.h>
+#import <AFNetworking/AFNetworking.h>
+#import "AFOAuth2Manager.h"
+#import "Utility.h"
 
 @class AppDelegate;
 
 @interface MainWindow : NSWindowController < PXSourceListDataSource, PXSourceListDelegate>{
     IBOutlet NSWindow *w;
     IBOutlet PXSourceList *sourceList;
-    AppDelegate *_app;
+    AppDelegate *appdel;
+    IBOutlet NSSearchField *searchtitlefield;
+    IBOutlet NSArrayController *searcharraycontroller;
+    IBOutlet NSTableView *searchtb;
 }
 @property (strong) IBOutlet NSToolbar *toolbar;
 @property (strong) IBOutlet NSView *mainview;
@@ -24,5 +30,6 @@
 @property (strong) IBOutlet NSVisualEffectView *progressview;
 @property (strong) IBOutlet NSView *searchview;
 @property (strong) IBOutlet NSView *seasonview;
-
+-(void)setDelegate:(AppDelegate*) adelegate;
+- (IBAction)performsearch:(id)sender;
 @end

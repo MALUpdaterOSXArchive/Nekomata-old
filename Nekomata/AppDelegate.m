@@ -21,10 +21,9 @@
 }
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     _privateQueue = dispatch_queue_create("moe.ateliershiori.nekomata", DISPATCH_QUEUE_CONCURRENT);
-    operationQueue = [NSOperationQueue new];
     // Load main window
     mainwindowcontroller = [MainWindow new];
-    mainwindowcontroller.app = self;
+    [mainwindowcontroller setDelegate:self];
     [mainwindowcontroller.window makeKeyAndOrderFront:self];
     if ([self credentialexist]){
         [self startoauthtimer];
@@ -52,9 +51,6 @@
 - (IBAction)showpreferences:(id)sender {
         [self.preferencesWindowController showWindow:nil];
 }
--(NSOperationQueue *)getQueue{
-    return operationQueue;
-}
 -(void)startoauthtimer{
     oauthrefreshtimer = [MSWeakTimer scheduledTimerWithTimeInterval:600 target:self selector:@selector(timerfire) userInfo:nil repeats:YES dispatchQueue:self.privateQueue];
 }
@@ -64,13 +60,8 @@
 -(void)timerfire{
     AFOAuthCredential *credential =
     [AFOAuthCredential retrieveCredentialWithIdentifier:@"Nekomata"];
-    NSLog(@"%f",[[credential getExpiredDate] timeIntervalSinceNow]);
     if ([[credential getExpiredDate] timeIntervalSinceNow] < -10){
-        NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self
-                                                                                selector:@selector(performTokenRefresh)
-                                                                                  object:nil];
-        // Add to queue and execute
-        [operationQueue addOperation:operation];
+        [self performTokenRefresh];
     }
 }
 -(void)performTokenRefresh{

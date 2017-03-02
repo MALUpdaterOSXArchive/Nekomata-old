@@ -18,11 +18,7 @@
 		2D6481C11E669E7900984550 /* PXSourceList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6481BE1E6697DB00984550 /* PXSourceList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2D6481C21E669E7900984550 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6481BC1E6695C800984550 /* Sparkle.framework */; };
 		2D6481C31E669E7900984550 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6481BC1E6695C800984550 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2DA2E1271E67B6FA000B0DA4 /* AFHTTPSessionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA2E1221E67B6FA000B0DA4 /* AFHTTPSessionOperation.m */; };
-		2DA2E1281E67B6FA000B0DA4 /* AFURLSessionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA2E1241E67B6FA000B0DA4 /* AFURLSessionOperation.m */; };
-		2DA2E1291E67B6FA000B0DA4 /* AsynchronousOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA2E1261E67B6FA000B0DA4 /* AsynchronousOperation.m */; };
 		2DA2E12C1E67B76D000B0DA4 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA2E12B1E67B76D000B0DA4 /* MSWeakTimer.m */; };
-		2DF502161E67473F008EC236 /* EasyNSURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF502151E67473F008EC236 /* EasyNSURLConnection.m */; };
 		2DF5021C1E674D1E008EC236 /* SoftwareUpdatesPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5021B1E674D1E008EC236 /* SoftwareUpdatesPref.m */; };
 		2DF5021F1E674D42008EC236 /* LoginPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5021E1E674D42008EC236 /* LoginPref.m */; };
 		2DF502211E674D4B008EC236 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DF502201E674D4B008EC236 /* LoginView.xib */; };
@@ -85,16 +81,8 @@
 		2D6481B81E66957400984550 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		2D6481BC1E6695C800984550 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		2D6481BE1E6697DB00984550 /* PXSourceList.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PXSourceList.framework; sourceTree = "<group>"; };
-		2DA2E1211E67B6FA000B0DA4 /* AFHTTPSessionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionOperation.h; sourceTree = "<group>"; };
-		2DA2E1221E67B6FA000B0DA4 /* AFHTTPSessionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionOperation.m; sourceTree = "<group>"; };
-		2DA2E1231E67B6FA000B0DA4 /* AFURLSessionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionOperation.h; sourceTree = "<group>"; };
-		2DA2E1241E67B6FA000B0DA4 /* AFURLSessionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionOperation.m; sourceTree = "<group>"; };
-		2DA2E1251E67B6FA000B0DA4 /* AsynchronousOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsynchronousOperation.h; sourceTree = "<group>"; };
-		2DA2E1261E67B6FA000B0DA4 /* AsynchronousOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsynchronousOperation.m; sourceTree = "<group>"; };
 		2DA2E12A1E67B76D000B0DA4 /* MSWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSWeakTimer.h; sourceTree = "<group>"; };
 		2DA2E12B1E67B76D000B0DA4 /* MSWeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSWeakTimer.m; sourceTree = "<group>"; };
-		2DF502141E67473F008EC236 /* EasyNSURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyNSURLConnection.h; sourceTree = "<group>"; };
-		2DF502151E67473F008EC236 /* EasyNSURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyNSURLConnection.m; sourceTree = "<group>"; };
 		2DF502171E674CCD008EC236 /* MASPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MASPreferences.framework; sourceTree = "<group>"; };
 		2DF502191E674D1E008EC236 /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
 		2DF5021A1E674D1E008EC236 /* SoftwareUpdatesPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareUpdatesPref.h; sourceTree = "<group>"; };
@@ -228,8 +216,6 @@
 			isa = PBXGroup;
 			children = (
 				2DF502481E6765AB008EC236 /* AFNetworking */,
-				2DF502141E67473F008EC236 /* EasyNSURLConnection.h */,
-				2DF502151E67473F008EC236 /* EasyNSURLConnection.m */,
 				2DA2E12A1E67B76D000B0DA4 /* MSWeakTimer.h */,
 				2DA2E12B1E67B76D000B0DA4 /* MSWeakTimer.m */,
 				2DF502251E674DBF008EC236 /* Utility.h */,
@@ -255,12 +241,6 @@
 		2DF502481E6765AB008EC236 /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
-				2DA2E1211E67B6FA000B0DA4 /* AFHTTPSessionOperation.h */,
-				2DA2E1221E67B6FA000B0DA4 /* AFHTTPSessionOperation.m */,
-				2DA2E1231E67B6FA000B0DA4 /* AFURLSessionOperation.h */,
-				2DA2E1241E67B6FA000B0DA4 /* AFURLSessionOperation.m */,
-				2DA2E1251E67B6FA000B0DA4 /* AsynchronousOperation.h */,
-				2DA2E1261E67B6FA000B0DA4 /* AsynchronousOperation.m */,
 				2DF502491E6765B7008EC236 /* AFHTTPRequestSerializer+OAuth2.h */,
 				2DF5024A1E6765B7008EC236 /* AFHTTPRequestSerializer+OAuth2.m */,
 				2DF5024B1E6765B7008EC236 /* AFOAuth2Manager.h */,
@@ -384,18 +364,14 @@
 				2DF502501E6765B7008EC236 /* AFOAuth2Manager.m in Sources */,
 				2DF502271E674DBF008EC236 /* Utility.m in Sources */,
 				2DF502451E675BC5008EC236 /* ClientConstants.m in Sources */,
-				2DA2E1271E67B6FA000B0DA4 /* AFHTTPSessionOperation.m in Sources */,
 				2DF5021F1E674D42008EC236 /* LoginPref.m in Sources */,
 				2D64819C1E66950900984550 /* main.m in Sources */,
 				2DA2E12C1E67B76D000B0DA4 /* MSWeakTimer.m in Sources */,
 				2DF5022F1E6751CC008EC236 /* GeneralPref.m in Sources */,
 				2D6481991E66950900984550 /* AppDelegate.m in Sources */,
-				2DA2E1281E67B6FA000B0DA4 /* AFURLSessionOperation.m in Sources */,
 				2DF5024F1E6765B7008EC236 /* AFHTTPRequestSerializer+OAuth2.m in Sources */,
 				2DF5021C1E674D1E008EC236 /* SoftwareUpdatesPref.m in Sources */,
-				2DF502161E67473F008EC236 /* EasyNSURLConnection.m in Sources */,
 				2D6481B91E66957400984550 /* MainWindow.m in Sources */,
-				2DA2E1291E67B6FA000B0DA4 /* AsynchronousOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
