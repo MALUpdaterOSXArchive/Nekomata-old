@@ -31,6 +31,6 @@
 -(IBAction)startlogin:(id)sender;
 -(IBAction)clearlogin:(id)sender;
 -(IBAction)registermal:(id)sender;
--(void)login:(NSString *)username password:(NSString *)password;
+-(void)login:(NSString *)key;
 -(void)loadlogin;
 @end

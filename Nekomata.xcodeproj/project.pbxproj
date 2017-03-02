@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D57A2D61E68ADFE000B101F /* NSString_stripHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D57A2D51E68ADFE000B101F /* NSString_stripHtml.m */; };
 		2D6481991E66950900984550 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6481981E66950900984550 /* AppDelegate.m */; };
 		2D64819C1E66950900984550 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D64819B1E66950900984550 /* main.m */; };
 		2D64819E1E66950900984550 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D64819D1E66950900984550 /* Assets.xcassets */; };
@@ -66,6 +67,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2D57A2D41E68ADFE000B101F /* NSString_stripHtml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSString_stripHtml.h; sourceTree = "<group>"; };
+		2D57A2D51E68ADFE000B101F /* NSString_stripHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_stripHtml.m; sourceTree = "<group>"; };
 		2D6481941E66950900984550 /* Nekomata.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nekomata.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D6481971E66950900984550 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2D6481981E66950900984550 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -220,6 +223,8 @@
 				2DA2E12B1E67B76D000B0DA4 /* MSWeakTimer.m */,
 				2DF502251E674DBF008EC236 /* Utility.h */,
 				2DF502261E674DBF008EC236 /* Utility.m */,
+				2D57A2D41E68ADFE000B101F /* NSString_stripHtml.h */,
+				2D57A2D51E68ADFE000B101F /* NSString_stripHtml.m */,
 			);
 			name = "Support Classes";
 			sourceTree = "<group>";
@@ -366,6 +371,7 @@
 				2DF502451E675BC5008EC236 /* ClientConstants.m in Sources */,
 				2DF5021F1E674D42008EC236 /* LoginPref.m in Sources */,
 				2D64819C1E66950900984550 /* main.m in Sources */,
+				2D57A2D61E68ADFE000B101F /* NSString_stripHtml.m in Sources */,
 				2DA2E12C1E67B76D000B0DA4 /* MSWeakTimer.m in Sources */,
 				2DF5022F1E6751CC008EC236 /* GeneralPref.m in Sources */,
 				2D6481991E66950900984550 /* AppDelegate.m in Sources */,

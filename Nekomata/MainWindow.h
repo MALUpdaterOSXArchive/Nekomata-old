@@ -12,6 +12,7 @@
 #import "AFOAuth2Manager.h"
 #import "Utility.h"
 
+
 @class AppDelegate;
 
 @interface MainWindow : NSWindowController < PXSourceListDataSource, PXSourceListDelegate>{
@@ -21,6 +22,8 @@
     IBOutlet NSSearchField *searchtitlefield;
     IBOutlet NSArrayController *searcharraycontroller;
     IBOutlet NSTableView *searchtb;
+    // Title Info
+    int selectedid;
 }
 @property (strong) IBOutlet NSToolbar *toolbar;
 @property (strong) IBOutlet NSView *mainview;
@@ -30,6 +33,27 @@
 @property (strong) IBOutlet NSVisualEffectView *progressview;
 @property (strong) IBOutlet NSView *searchview;
 @property (strong) IBOutlet NSView *seasonview;
+@property (strong) IBOutlet NSVisualEffectView *notloggedinview;
+// Info View
+@property (strong) IBOutlet NSProgressIndicator *progressindicator;
+@property (strong) IBOutlet NSView *noinfoview;
+@property (strong) IBOutlet NSTextField *infoviewtitle;
+@property (strong) IBOutlet NSTextField *infoviewalttitles;
+@property (strong) IBOutlet NSTextView *infoviewdetailstextview;
+@property (strong) IBOutlet NSTextView *infoviewsynopsistextview;
+@property (strong) IBOutlet NSImageView *infoviewposterimage;
+
+
+//Public Methods
 -(void)setDelegate:(AppDelegate*) adelegate;
+- (IBAction)performlogin:(id)sender;
+- (IBAction)PerformAddTitle:(id)sender;
+- (IBAction)sharetitle:(id)sender;
+-(void)loadmainview;
+//Search View
 - (IBAction)performsearch:(id)sender;
+- (IBAction)searchtbdoubleclick:(id)sender;
+// Info View
+- (IBAction)viewonanilist:(id)sender;
+
 @end

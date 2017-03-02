@@ -29,11 +29,15 @@
         [self startoauthtimer];
         [oauthrefreshtimer fire];
     }
+    [self showloginnotice];
 }
 
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
+}
+-(MainWindow *)getMainWindowController{
+    return mainwindowcontroller;
 }
 - (NSWindowController *)preferencesWindowController
 {
@@ -89,5 +93,28 @@
         return true;
     }
     return false;
+}
+-(void)showloginnotice{
+    if (![self credentialexist]) {
+        // First time prompt
+        NSAlert * alert = [[NSAlert alloc] init] ;
+        [alert addButtonWithTitle:NSLocalizedString(@"Yes",nil)];
+        [alert addButtonWithTitle:NSLocalizedString(@"No",nil)];
+        [alert setMessageText:NSLocalizedString(@"Welcome to Nekomata",nil)];
+        [alert setInformativeText:NSLocalizedString(@"Before you can use this program, you need to add an account. Do you want to open Preferences to authenticate an account now? \r\rNote that you won't be able to use any of the functionality until you authenticate.",nil)];
+        // Set Message type to Warning
+        alert.alertStyle = NSAlertStyleInformational;
+        [alert beginSheetModalForWindow:mainwindowcontroller.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode== NSAlertFirstButtonReturn) {
+            // Show Preference Window and go to Login Preference Pane
+            [self showloginpref];
+        }
+            }];
+    }
+
+}
+-(void)showloginpref{
+    [self.preferencesWindowController showWindow:nil];
+    [(MASPreferencesWindowController *)self.preferencesWindowController selectControllerAtIndex:1];
 }
 @end

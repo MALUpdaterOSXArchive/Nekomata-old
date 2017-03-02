@@ -18,6 +18,8 @@
 }
 // Preference Window
 @property (nonatomic, readonly) NSWindowController *preferencesWindowController;
+-(MainWindow *)getMainWindowController;
 - (IBAction)showpreferences:(id)sender;
+-(void)showloginpref;
 @end
 

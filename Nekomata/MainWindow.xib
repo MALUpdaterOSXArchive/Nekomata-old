@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12106.1" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12106.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainWindow">
             <connections>
                 <outlet property="animeinfoview" destination="C59-wX-gdu" id="j5p-QE-k4Z"/>
                 <outlet property="animelistview" destination="3i9-yL-qQG" id="AMZ-w2-b0a"/>
+                <outlet property="infoviewalttitles" destination="C9a-DZ-IeB" id="fHh-LN-yq2"/>
+                <outlet property="infoviewdetailstextview" destination="YId-Bz-Wxt" id="8KO-01-oQP"/>
+                <outlet property="infoviewposterimage" destination="adJ-lN-u1Q" id="jfv-2p-Ocv"/>
+                <outlet property="infoviewsynopsistextview" destination="kPY-d9-4j3" id="Drf-6d-23g"/>
+                <outlet property="infoviewtitle" destination="oxO-0F-FMk" id="L7y-Gv-fbm"/>
                 <outlet property="mainview" destination="bkX-dG-MlV" id="hvu-zy-EK5"/>
+                <outlet property="noinfoview" destination="Idi-HR-8Ng" id="yub-Og-56z"/>
+                <outlet property="notloggedinview" destination="Bid-LM-YGW" id="X7P-bv-gBz"/>
+                <outlet property="progressindicator" destination="nJp-pg-isf" id="mIT-I9-J37"/>
                 <outlet property="progressview" destination="K71-hX-Lqz" id="UxL-8a-2aR"/>
                 <outlet property="searcharraycontroller" destination="zFi-L7-BaW" id="Upl-me-s91"/>
                 <outlet property="searchtb" destination="0oH-PF-Un2" id="nQ0-YQ-a9Y"/>
@@ -113,6 +122,9 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                         </button>
+                        <connections>
+                            <action selector="sharetitle:" target="-2" id="ABN-xD-us2"/>
+                        </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="22093AE0-3D95-4384-8267-78CAA08B0B3C" explicitItemIdentifier="AddTitleInfo" label="Add Title" paletteLabel="Add Title" toolTip="Add Title" image="NSAddTemplate" id="qiG-Dd-1QN">
                         <size key="minSize" width="8" height="25"/>
@@ -125,6 +137,9 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                         </button>
+                        <connections>
+                            <action selector="PerformAddTitle:" target="-2" id="n9f-h0-dVB"/>
+                        </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="0A9A687E-0892-4E2D-9DA3-91B5DFAF1854" explicitItemIdentifier="AddTitleSeason" label="Add Title" paletteLabel="Add Title" toolTip="Add Title" image="NSAddTemplate" id="DVY-q1-nSf">
                         <size key="minSize" width="8" height="25"/>
@@ -137,6 +152,9 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                         </button>
+                        <connections>
+                            <action selector="PerformAddTitle:" target="-2" id="0QO-yf-us5"/>
+                        </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="A1F35638-FA53-4287-A620-A3B4964133B5" explicitItemIdentifier="AddTitleSearch" label="Add Title" paletteLabel="Add Title" toolTip="Add Title" image="NSAddTemplate" id="2dK-au-ShY">
                         <size key="minSize" width="8" height="25"/>
@@ -148,7 +166,13 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <binding destination="zFi-L7-BaW" name="enabled" keyPath="selectedObjects.@count" id="m9O-Fp-1pK"/>
+                            </connections>
                         </button>
+                        <connections>
+                            <action selector="PerformAddTitle:" target="-2" id="0FR-eE-uVl"/>
+                        </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="B87F1C55-7DD2-41B7-A147-4F8E4368E4A2" explicitItemIdentifier="DeleteTitle" label="Delete Title" paletteLabel="Delete Title" toolTip="Delete Title" image="delete" id="WJo-Ig-ng6">
                         <size key="minSize" width="8" height="25"/>
@@ -216,6 +240,9 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                         </button>
+                        <connections>
+                            <action selector="viewonanilist:" target="-2" id="vAE-Au-nBa"/>
+                        </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="B007FB1F-D7B7-4E1C-B09F-A81CF140598C" explicitItemIdentifier="yearselect" label="Year" paletteLabel="Year" toolTip="Year" id="hME-DZ-uLk">
                         <size key="minSize" width="100" height="25"/>
@@ -278,6 +305,9 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                         </button>
+                        <connections>
+                            <action selector="sharetitle:" target="-2" id="TZ5-1L-2Ti"/>
+                        </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="4485F696-5704-4CEF-BE6E-6C62E871417C" explicitItemIdentifier="ShareInfo" label="Share" paletteLabel="Share" toolTip="Share" image="NSShareTemplate" id="wwq-CJ-IhW">
                         <size key="minSize" width="8" height="25"/>
@@ -290,6 +320,9 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                         </button>
+                        <connections>
+                            <action selector="sharetitle:" target="-2" id="Xlr-FD-ffi"/>
+                        </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Mt7-WY-45F"/>
                 </allowedToolbarItems>
@@ -357,7 +390,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jQQ-hl-aNm">
-                    <rect key="frame" x="211" y="114" width="415" height="17"/>
+                    <rect key="frame" x="211" y="213" width="415" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Synopsis" id="AgW-Hx-324">
                         <font key="font" metaFont="systemBold"/>
@@ -366,21 +399,21 @@
                     </textFieldCell>
                 </textField>
                 <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="YPg-ym-Hn8">
-                    <rect key="frame" x="213" y="109" width="531" height="5"/>
+                    <rect key="frame" x="213" y="208" width="531" height="5"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
                 <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntj-hS-Ybl">
-                    <rect key="frame" x="213" y="11" width="531" height="91"/>
+                    <rect key="frame" x="213" y="20" width="531" height="181"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="va9-SX-7eZ">
-                        <rect key="frame" x="0.0" y="0.0" width="531" height="91"/>
+                        <rect key="frame" x="0.0" y="0.0" width="531" height="181"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView ambiguous="YES" editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="kPY-d9-4j3">
-                                <rect key="frame" x="0.0" y="0.0" width="531" height="91"/>
+                                <rect key="frame" x="0.0" y="0.0" width="531" height="181"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="531" height="91"/>
+                                <size key="minSize" width="531" height="181"/>
                                 <size key="maxSize" width="1098" height="10000000"/>
                                 <attributedString key="textStorage">
                                     <fragment content="Text">
@@ -400,7 +433,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="USE-uE-bdz">
-                        <rect key="frame" x="515" y="0.0" width="16" height="91"/>
+                        <rect key="frame" x="515" y="0.0" width="16" height="181"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -439,56 +472,8 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mLV-7i-fTj">
-                    <rect key="frame" x="211" y="211" width="535" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Background" id="7SQ-XT-N45">
-                        <font key="font" metaFont="systemBold"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="x1J-ZZ-gO9">
-                    <rect key="frame" x="213" y="206" width="531" height="5"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                </box>
-                <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOm-uE-vxj">
-                    <rect key="frame" x="213" y="150" width="531" height="50"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="Z6m-ku-zLm">
-                        <rect key="frame" x="0.0" y="0.0" width="531" height="50"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView ambiguous="YES" editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="MVd-Ct-Edq">
-                                <rect key="frame" x="0.0" y="0.0" width="531" height="50"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="531" height="50"/>
-                                <size key="maxSize" width="1098" height="10000000"/>
-                                <attributedString key="textStorage">
-                                    <fragment content="Text">
-                                        <attributes>
-                                            <font key="NSFont" metaFont="system"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="Jal-v7-v5l">
-                        <rect key="frame" x="-100" y="-100" width="87" height="18"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="SRv-jx-HMx">
-                        <rect key="frame" x="515" y="0.0" width="16" height="50"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                </scrollView>
             </subviews>
-            <point key="canvasLocation" x="317" y="1813"/>
+            <point key="canvasLocation" x="316.5" y="1813"/>
         </visualEffectView>
         <customView identifier="ListView" id="3i9-yL-qQG" userLabel="AnimeList">
             <rect key="frame" x="0.0" y="0.0" width="564" height="300"/>
@@ -678,7 +663,7 @@
                         </textField>
                     </subviews>
                 </customView>
-                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="nJp-pg-isf">
+                <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="nJp-pg-isf">
                     <rect key="frame" x="259" y="201" width="32" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 </progressIndicator>
@@ -763,6 +748,9 @@
                                         </connections>
                                     </tableColumn>
                                 </tableColumns>
+                                <connections>
+                                    <action trigger="doubleAction" selector="searchtbdoubleclick:" target="-2" id="SZt-Ga-bAF"/>
+                                </connections>
                             </tableView>
                         </subviews>
                     </clipView>
@@ -1005,18 +993,21 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="performlogin:" target="-2" id="Kev-U3-Moc"/>
+                    </connections>
                 </button>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QTK-of-qm1">
                     <rect key="frame" x="107" y="119" width="353" height="82"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="To view your list, please login to add your account." id="I2H-q9-6DI">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="To use the functionality of Nekomata, you must authenticate with AniList." id="I2H-q9-6DI">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="93.5" y="1146"/>
+            <point key="canvasLocation" x="34" y="1099"/>
         </visualEffectView>
         <customView id="z2B-wC-5cy" userLabel="editpopover">
             <rect key="frame" x="0.0" y="0.0" width="255" height="149"/>
@@ -1152,7 +1143,11 @@
             </connections>
         </popover>
         <viewController id="w9r-Zw-PrM" userLabel="Mini EditPopover View Controller"/>
-        <arrayController id="zFi-L7-BaW" userLabel="Search Array Controller"/>
+        <arrayController objectClassName="NSDictionary" editable="NO" id="zFi-L7-BaW" userLabel="Search Array Controller">
+            <declaredKeys>
+                <string>allValues</string>
+            </declaredKeys>
+        </arrayController>
     </objects>
     <resources>
         <image name="Edit" width="32" height="32"/>

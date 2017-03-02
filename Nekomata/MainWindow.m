@@ -7,6 +7,8 @@
 //
 
 #import "MainWindow.h"
+#import "AppDelegate.h"
+#import "NSString_stripHtml.h"
 
 @interface MainWindow ()
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
@@ -65,7 +67,7 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-    
+    selectedid = 0;
     // Set Mainview
     if ([[NSUserDefaults standardUserDefaults] valueForKey:@"selectedmainview"]){
         NSNumber *selected = (NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"selectedmainview"];
@@ -79,6 +81,16 @@
 
 -(void)setDelegate:(AppDelegate*) adelegate{
     appdel = adelegate;
+}
+
+- (IBAction)performlogin:(id)sender {
+    [appdel showloginpref];
+}
+
+- (IBAction)PerformAddTitle:(id)sender {
+}
+
+- (IBAction)sharetitle:(id)sender {
 }
 
 - (void)windowWillClose:(NSNotification *)notification{
@@ -179,25 +191,39 @@
     NSIndexSet *selectedIndexes = [sourceList selectedRowIndexes];
     NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
     NSPoint origin = NSMakePoint(0, 0);
-    if ([identifier isEqualToString:@"animelist"]){
-            [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_animelistview];
-            _animelistview.frame = mainviewframe;
-            [_animelistview setFrameOrigin:origin];
+    if ([Utility getToken] != nil){
+        if ([identifier isEqualToString:@"animelist"]){
+                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_animelistview];
+                _animelistview.frame = mainviewframe;
+                [_animelistview setFrameOrigin:origin];
+        }
+        else if ([identifier isEqualToString:@"search"]){
+                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_searchview];
+                _searchview.frame = mainviewframe;
+                [_searchview setFrameOrigin:origin];
+        }
+        else if ([identifier isEqualToString:@"titleinfo"]){
+            if (selectedid > 0){
+                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_animeinfoview];
+                _animeinfoview.frame = mainviewframe;
+                [_animeinfoview setFrameOrigin:origin];
+            }
+            else{
+                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_progressview];
+                _progressview.frame = mainviewframe;
+                [_progressview setFrameOrigin:origin];
+            }
+        }
+        else if ([identifier isEqualToString:@"seasons"]){
+                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_seasonview];
+                _seasonview.frame = mainviewframe;
+                [_seasonview setFrameOrigin:origin];
+        }
     }
-    else if ([identifier isEqualToString:@"search"]){
-            [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_searchview];
-            _searchview.frame = mainviewframe;
-            [_searchview setFrameOrigin:origin];
-    }
-    else if ([identifier isEqualToString:@"titleinfo"]){
-            [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_animeinfoview];
-            _animeinfoview.frame = mainviewframe;
-            [_animeinfoview setFrameOrigin:origin];
-    }
-    else if ([identifier isEqualToString:@"seasons"]){
-            [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_seasonview];
-            _seasonview.frame = mainviewframe;
-            [_seasonview setFrameOrigin:origin];
+    else {
+        [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_notloggedinview];
+        _notloggedinview.frame = mainviewframe;
+        [_notloggedinview setFrameOrigin:origin];
     }
     // Save current view
     [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithLong:selectedrow] forKey:@"selectedmainview"];
@@ -211,58 +237,120 @@
     }
     NSIndexSet *selectedIndexes = [sourceList selectedRowIndexes];
     NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
-    if ([identifier isEqualToString:@"animelist"]){
-        [_toolbar insertItemWithItemIdentifier:@"editList" atIndex:0];
-        [_toolbar insertItemWithItemIdentifier:@"DeleteTitle" atIndex:1];
-        [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:2];
-        [_toolbar insertItemWithItemIdentifier:@"ShareList" atIndex:3];
-        [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:4];
-        [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:5];
-    }
-    else if ([identifier isEqualToString:@"search"]){
-        [_toolbar insertItemWithItemIdentifier:@"AddTitleSearch" atIndex:0];
-        [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:1];
-        [_toolbar insertItemWithItemIdentifier:@"search" atIndex:2];
-      
-    }
-    else if ([identifier isEqualToString:@"titleinfo"]){
-        [_toolbar insertItemWithItemIdentifier:@"AddTitleInfo" atIndex:0];
-        [_toolbar insertItemWithItemIdentifier:@"viewonmal" atIndex:1];
-        [_toolbar insertItemWithItemIdentifier:@"ShareInfo" atIndex:2];
-        
-    }
-    else if ([identifier isEqualToString:@"seasons"]){
-       [_toolbar insertItemWithItemIdentifier:@"AddTitleSeason" atIndex:0];
-        [_toolbar insertItemWithItemIdentifier:@"yearselect" atIndex:1];
-        [_toolbar insertItemWithItemIdentifier:@"seasonselect" atIndex:2];
-        [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:3];
+    if ([Utility getToken] != nil){
+        if ([identifier isEqualToString:@"animelist"]){
+            [_toolbar insertItemWithItemIdentifier:@"editList" atIndex:0];
+            [_toolbar insertItemWithItemIdentifier:@"DeleteTitle" atIndex:1];
+            [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:2];
+            [_toolbar insertItemWithItemIdentifier:@"ShareList" atIndex:3];
+            [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:4];
+            [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:5];
+        }
+        else if ([identifier isEqualToString:@"search"]){
+            [_toolbar insertItemWithItemIdentifier:@"AddTitleSearch" atIndex:0];
+            [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:1];
+            [_toolbar insertItemWithItemIdentifier:@"search" atIndex:2];
+          
+        }
+        else if ([identifier isEqualToString:@"titleinfo"]){
+            if (selectedid > 0){
+                [_toolbar insertItemWithItemIdentifier:@"AddTitleInfo" atIndex:0];
+                [_toolbar insertItemWithItemIdentifier:@"viewonmal" atIndex:1];
+                [_toolbar insertItemWithItemIdentifier:@"ShareInfo" atIndex:2];
+            }
+        }
+        else if ([identifier isEqualToString:@"seasons"]){
+           [_toolbar insertItemWithItemIdentifier:@"AddTitleSeason" atIndex:0];
+            [_toolbar insertItemWithItemIdentifier:@"yearselect" atIndex:1];
+            [_toolbar insertItemWithItemIdentifier:@"seasonselect" atIndex:2];
+            [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:3];
+        }
     }
 }
--(NSString *)getToken{
-    AFOAuthCredential *credential =
-    [AFOAuthCredential retrieveCredentialWithIdentifier:@"Nekomata"];
-    if (credential.accessToken){
-        return credential.accessToken;
-    }
-    return nil;
-    
-}
+
 // Search
 - (IBAction)performsearch:(id)sender {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:[NSString stringWithFormat:@"https://anilist.co/api/anime/search/%@",[Utility urlEncodeString:searchtitlefield.stringValue]] parameters:@{@"access_token":[self getToken]} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        [self populatesearchtb:responseObject];
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
-    
+    if ([searchtitlefield.stringValue length] > 0){
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        [manager GET:[NSString stringWithFormat:@"https://anilist.co/api/anime/search/%@",[Utility urlEncodeString:searchtitlefield.stringValue]] parameters:@{@"access_token":[Utility getToken]} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+            [self populatesearchtb:responseObject];
+        } failure:^(NSURLSessionTask *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+        }];
+    }
+    else{
+        NSMutableArray * a = [searcharraycontroller content];
+        [a removeAllObjects];
+        [searchtb reloadData];
+        [searchtb deselectAll:self];
+    }
    }
+
+- (IBAction)searchtbdoubleclick:(id)sender {
+    if ([searchtb clickedRow] >=0){
+        if ([searchtb clickedRow] >-1){
+            NSDictionary *d = [[searcharraycontroller selectedObjects] objectAtIndex:0];
+            NSNumber * idnum = d[@"id"];
+            [self loadanimeinfo:idnum.intValue];
+        }
+    }
+}
 -(void)populatesearchtb:(NSArray*)json{
     NSMutableArray * a = [searcharraycontroller content];
     [a removeAllObjects];
     [searcharraycontroller addObjects:json];
     [searchtb reloadData];
     [searchtb deselectAll:self];
+}
+-(void)loadanimeinfo:(int) idnum{
+    int previd = selectedid;
+    selectedid = 0;
+     [sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:4]byExtendingSelection:false];
+    [self loadmainview];
+    [_noinfoview setHidden:YES];
+    [_progressindicator setHidden: NO];
+    [_progressindicator startAnimation:nil];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:[NSString stringWithFormat:@"https://anilist.co/api/anime/%i",idnum] parameters:@{@"access_token":[Utility getToken]} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        selectedid = idnum;
+        [_progressindicator stopAnimation:nil];
+        [self populateInfoView:responseObject];
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        [_progressindicator stopAnimation:nil];
+        selectedid = previd;
+        if (selectedid == 0)
+            [_noinfoview setHidden:NO];
+        [self loadmainview];
+    }];
+}
+-(void)populateInfoView:(id)object{
+    NSDictionary * d = object;
+    NSMutableString *titles = [NSMutableString new];
+    NSMutableString *details = [NSMutableString new];
+    NSMutableString *genres = [NSMutableString new];
+    [_infoviewtitle setStringValue:d[@"title_romaji"]];
+    NSArray * othertitles = d[@"synonyms"];
+    [titles appendString:[Utility appendstringwithArray:othertitles]];
+    [_infoviewalttitles setStringValue:titles];
+    NSArray * genresa = d[@"genres"];
+    [genres appendString:[Utility appendstringwithArray:genresa]];
+    NSString * type = d[@"type"];
+    NSNumber * score = d[@"average_score"];
+    NSNumber * popularity = d[@"popularity"];
+    NSImage * posterimage = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url_lge"]]]];
+    [_infoviewposterimage setImage:posterimage];
+    [details appendString:[NSString stringWithFormat:@"Type: %@\n", type]];
+    [details appendString:[NSString stringWithFormat:@"Genre: %@\n", genres]];
+    [details appendString:[NSString stringWithFormat:@"Score: %f/100\n", score.floatValue]];
+    [details appendString:[NSString stringWithFormat:@"Popularity: %i\n", popularity.intValue]];
+    NSString * synopsis = d[@"description"];
+    [_infoviewdetailstextview setString:details];
+    [_infoviewsynopsistextview setString:[synopsis stripHtml]];
+    [self loadmainview];
+}
+- (IBAction)viewonanilist:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/anime/%i",selectedid]]];
 }
 @end
 
