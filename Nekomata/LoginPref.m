@@ -103,34 +103,10 @@
                                                    NSLog(@"Error: %@", error);
                                                    [Utility showsheetmessage:@"Nekomata was unable to log you in since the pin is invalid." explaination:@"Make sure you copied the pin correctly." window:[[self view] window]];
                                                }];
-    /*if ([request getStatusCode] == 200 && error == nil) {
-        //Login successful
-        [Utility showsheetmessage:@"Login Successful" explaination: @"Login is successful." window:[[self view] window]];
-		// Store account in login keychain
-        //[MALEngine storeaccount:[fieldusername stringValue] password:[fieldpassword stringValue]];
-        [clearbut setEnabled: YES];
-        [loggedinuser setStringValue:username];
-        [loggedinview setHidden:NO];
-        [loginview setHidden:YES];
-    }
-    else{
-        if (error.code == NSURLErrorNotConnectedToInternet) {
-            [Utility showsheetmessage:@"Nekomata was unable to log you in since you are not connected to the internet" explaination:@"Check your internet connection and try again." window:[[self view] window]];
-            [savebut setEnabled: YES];
-            [savebut setKeyEquivalent:@"\r"];
-        }
-        else{
-            //Login Failed, show error message
-            [Utility showsheetmessage:@"Nekomata was unable to log you in since you don't have the correct username and/or password." explaination:@"Check your username and password and try logging in again. If you recently changed your password, enter your new password and try again." window:[[self view] window]];
-            [savebut setEnabled: YES];
-            [savebut setKeyEquivalent:@"\r"];
-        }    
-     }*/
-
 }
 -(IBAction)registermal:(id)sender
 {
-	//Show MAL Registration Page
+	//Show AniList Registration Page
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://anilist.co/register"]];
 }
 -(IBAction) showgettingstartedpage:(id)sender
@@ -145,7 +121,7 @@
         [alert addButtonWithTitle:@"Yes"];
         [alert addButtonWithTitle:@"No"];
         [alert setMessageText:@"Do you want to log out?"];
-        [alert setInformativeText:@"Once you logged out, you need to log back in before you can use this application."];
+        [alert setInformativeText:@"Once you log out, you need to log back in before you can use this application."];
         // Set Message type to Warning
         [alert setAlertStyle:NSAlertStyleWarning];
         if ([alert runModal]== NSAlertFirstButtonReturn) {

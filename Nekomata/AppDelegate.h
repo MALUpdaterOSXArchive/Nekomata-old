@@ -8,14 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 #import "MainWindow.h"
+#import "MSWeakTimer.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>{
     MainWindow * mainwindowcontroller;
     NSWindowController *_preferencesWindowController;
+    NSOperationQueue * operationQueue;
+    MSWeakTimer * oauthrefreshtimer;
 }
 // Preference Window
 @property (nonatomic, readonly) NSWindowController *preferencesWindowController;
 - (IBAction)showpreferences:(id)sender;
-
+-(NSOperationQueue *)getQueue;
 @end
 

@@ -153,6 +153,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (BOOL)deleteCredentialWithIdentifier:(NSString *)identifier;
 
+/**
+ Gets Expiration Date of a credential
+ */
+- (NSDate *)getExpiredDate;
 @end
 
 NS_ASSUME_NONNULL_END
