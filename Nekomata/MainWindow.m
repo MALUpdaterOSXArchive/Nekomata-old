@@ -115,46 +115,26 @@
     _progressview.appearance = [NSAppearance appearanceNamed:appearencename];
     _animeinfoview.appearance = [NSAppearance appearanceNamed:appearencename];
     _notloggedinview.appearance = [NSAppearance appearanceNamed:appearencename];
+    _filterbarview.appearance = [NSAppearance appearanceNamed:appearencename];
     [w setFrame:[w frame] display:false];
 }
 #pragma mark -
 #pragma mark Source List Data Source Methods
-
 - (NSUInteger)sourceList:(PXSourceList*)sourceList numberOfChildrenOfItem:(id)item
 {
-    //Works the same way as the NSOutlineView data source: `nil` means a parent item
-    if(item==nil) {
-        return [self.sourceListItems count];
-    }
-    else {
-        return [[item children] count];
-    }
+    if (!item)
+        return self.sourceListItems.count;
+    
+    return [[item children] count];
 }
-
 
 - (id)sourceList:(PXSourceList*)aSourceList child:(NSUInteger)index ofItem:(id)item
 {
-    //Works the same way as the NSOutlineView data source: `nil` means a parent item
-    if(item==nil) {
-        return [self.sourceListItems objectAtIndex:index];
-    }
-    else {
-        return [[item children] objectAtIndex:index];
-    }
+    if (!item)
+        return self.sourceListItems[index];
+    
+    return [[item children] objectAtIndex:index];
 }
-
-
-- (id)sourceList:(PXSourceList*)aSourceList objectValueForItem:(id)item
-{
-    return [item title];
-}
-
-
-- (void)sourceList:(PXSourceList*)aSourceList setObjectValue:(id)object forItem:(id)item
-{
-    [item setTitle:object];
-}
-
 
 - (BOOL)sourceList:(PXSourceList*)aSourceList isItemExpandable:(id)item
 {
@@ -162,33 +142,27 @@
 }
 
 
-- (BOOL)sourceList:(PXSourceList*)aSourceList itemHasBadge:(id)item
-{
-    return !![(PXSourceListItem *)item badgeValue];
-}
-
-
-- (NSInteger)sourceList:(PXSourceList*)aSourceList badgeValueForItem:(id)item
-{
-    return [(PXSourceListItem *)item badgeValue].integerValue;
-}
-
-
-- (BOOL)sourceList:(PXSourceList*)aSourceList itemHasIcon:(id)item
-{
-    return !![item icon];
-}
-
-
-- (NSImage*)sourceList:(PXSourceList*)aSourceList iconForItem:(id)item
-{
-    NSImage * icon = [item icon];
-    [icon setTemplate:YES];
-    return icon;
-}
-
-
 #pragma mark Source List Delegate Methods
+- (NSView *)sourceList:(PXSourceList *)aSourceList viewForItem:(id)item
+{
+    PXSourceListTableCellView *cellView = nil;
+    if ([aSourceList levelForItem:item] == 0)
+        cellView = [aSourceList makeViewWithIdentifier:@"HeaderCell" owner:nil];
+    else
+        cellView = [aSourceList makeViewWithIdentifier:@"MainCell" owner:nil];
+    
+    PXSourceListItem *sourceListItem = item;
+    
+    // Only allow us to edit the user created photo collection titles.
+    cellView.textField.editable = false;
+    cellView.textField.selectable = false;
+    
+    cellView.textField.stringValue = sourceListItem.title ? sourceListItem.title : [sourceListItem.representedObject title];
+    cellView.imageView.image = [item icon];
+    
+    return cellView;
+}
+
 
 - (BOOL)sourceList:(PXSourceList*)aSourceList isGroupAlwaysExpanded:(id)group
 {

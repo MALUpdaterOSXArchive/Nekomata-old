@@ -34,6 +34,7 @@
 @property (strong) IBOutlet NSButton *droppedfilter;
 @property (strong) IBOutlet NSButton *plantowatchfilter;
 @property (strong) IBOutlet NSSearchField *animelistfilter;
+@property (strong) IBOutlet NSVisualEffectView *filterbarview;
 
 //Search View
 @property (strong) IBOutlet NSToolbar *toolbar;
