@@ -9,6 +9,7 @@
 #import "MainWindow.h"
 #import "AppDelegate.h"
 #import "NSString_stripHtml.h"
+#import "ListProcess.h"
 
 @interface MainWindow ()
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
@@ -62,7 +63,10 @@
     [_searchview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_seasonview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     self.window.titleVisibility = NSWindowTitleHidden;
-    
+    [self setAppearence];
+    // Fix textview text color
+    _infoviewdetailstextview.textColor = NSColor.controlTextColor;
+    _infoviewsynopsistextview.textColor = NSColor.controlTextColor;
 }
 
 - (void)windowDidLoad {
@@ -76,6 +80,8 @@
     else{
          [sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:1]byExtendingSelection:false];
     }
+    NSNumber *shouldrefresh = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshonstart"];
+    [self loadlist:shouldrefresh];
     
 }
 
@@ -95,6 +101,21 @@
 
 - (void)windowWillClose:(NSNotification *)notification{
     [[NSApplication sharedApplication] terminate:0];
+}
+-(void)setAppearence{
+    NSString * appearence = [[NSUserDefaults standardUserDefaults] valueForKey:@"appearence"];
+    NSString *appearencename;
+    if ([appearence isEqualToString:@"Light"]){
+        appearencename = NSAppearanceNameVibrantLight;
+    }
+    else{
+        appearencename = NSAppearanceNameVibrantDark;
+    }
+    w.appearance = [NSAppearance appearanceNamed:appearencename];
+    _progressview.appearance = [NSAppearance appearanceNamed:appearencename];
+    _animeinfoview.appearance = [NSAppearance appearanceNamed:appearencename];
+    _notloggedinview.appearance = [NSAppearance appearanceNamed:appearencename];
+    [w setFrame:[w frame] display:false];
 }
 #pragma mark -
 #pragma mark Source List Data Source Methods
@@ -161,7 +182,9 @@
 
 - (NSImage*)sourceList:(PXSourceList*)aSourceList iconForItem:(id)item
 {
-    return [item icon];
+    NSImage * icon = [item icon];
+    [icon setTemplate:YES];
+    return icon;
 }
 
 
@@ -267,8 +290,8 @@
         }
     }
 }
-
-// Search
+#pragma mark -
+#pragma mark Search View
 - (IBAction)performsearch:(id)sender {
     if ([searchtitlefield.stringValue length] > 0){
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -302,6 +325,148 @@
     [searchtb reloadData];
     [searchtb deselectAll:self];
 }
+#pragma mark Anime List
+-(void)loadlist:(bool)refresh{
+    id list = [Utility loadJSON:@"animelist.json" appendpath:@""];
+    if (list == nil || refresh){
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:[NSString stringWithFormat:@"https://anilist.co/api/user/%@/animelist/", [[NSUserDefaults standardUserDefaults] valueForKey:@"loggedinuserid"]] parameters:@{@"access_token":[Utility getToken]} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [self populateList:[Utility saveJSON:[ListProcess processAnimeList:responseObject] withFilename:@"animelist.json" appendpath:@"" replace:TRUE]];
+    
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+    }
+    else{
+        [self populateList:list];
+    }
+}
+-(void)populateList:(id)object{
+    // Populates list
+    NSMutableArray * a = [_animelistarraycontroller content];
+    [a removeAllObjects];
+    NSDictionary * data = object;
+    NSArray * list=data[@"list"];
+    [_animelistarraycontroller addObjects:list];
+    [self populatefiltercounts:data[@"status_count"]];
+    [_animelisttb reloadData];
+    [_animelisttb deselectAll:self];
+    [self performfilter];
+}
+-(void)populatefiltercounts:(NSDictionary*)d{
+    // Generates item counts for each status filter
+    NSNumber *watching = d[@"watching"];
+    NSNumber *completed = d[@"completed"];
+    NSNumber *onhold = d[@"on_hold"];
+    NSNumber *dropped = d[@"dropped"];
+    NSNumber *plantowatch = d[@"plan_to_watch"];
+    _watchingfilter.title = [NSString stringWithFormat:@"Watching (%i)",watching.intValue];
+    _completedfilter.title = [NSString stringWithFormat:@"Completed (%i)",completed.intValue];
+    _onholdfilter.title = [NSString stringWithFormat:@"On Hold (%i)",onhold.intValue];
+    _droppedfilter.title = [NSString stringWithFormat:@"Dropped (%i)",dropped.intValue];
+    _plantowatchfilter.title = [NSString stringWithFormat:@"Plan to watch (%i)",plantowatch.intValue];
+}
+- (IBAction)filterperform:(id)sender {
+    [self performfilter];
+}
+-(void)performfilter{
+    // This method generates a predicate rule to use as a filter
+    NSMutableArray * predicateformat = [NSMutableArray new];
+    NSMutableArray * predicateobjects = [NSMutableArray new];
+    bool titlefilterused = false;
+    if (_animelistfilter.stringValue.length > 0){
+        [predicateformat addObject: @"(title_romaji CONTAINS [cd] %@)"];
+        [predicateobjects addObject: _animelistfilter.stringValue];
+        titlefilterused = true;
+    }
+    NSArray * filterstatus = [self obtainfilterstatus];
+    for (int i=0; i < [filterstatus count]; i++){
+        NSDictionary *d = [filterstatus objectAtIndex:i];
+        if ([filterstatus count] == 1){
+            [predicateformat addObject:@"(watched_status ==[cd] %@)"];
+            
+        }
+        else if (i == [filterstatus count]-1){
+            [predicateformat addObject:@"watched_status ==[cd] %@)"];
+        }
+        else if (i == 0){
+            [predicateformat addObject:@"(watched_status ==[cd] %@ OR "];
+        }
+        else{
+                [predicateformat addObject:@"watched_status ==[cd] %@ OR "];
+        }
+        [predicateobjects addObject:[[d allKeys] objectAtIndex:0]];
+    }
+    if ([predicateformat count] ==0 || [filterstatus count] == 0){
+        // Empty filter predicate
+        _animelistarraycontroller.filterPredicate = [NSPredicate predicateWithFormat:@"watched_status == %@",@""];
+    }
+    else{
+        // Build Predicate rules
+        NSMutableString * predicaterule = [NSMutableString new];
+        for (int i=0; i < [predicateformat count]; i++){
+            NSString *format = [predicateformat objectAtIndex:i];
+            if (titlefilterused && i==0){
+                if ([predicateformat count] == 1) {
+                    [predicaterule appendString:format];
+                    continue;
+                }
+                else{
+                    [predicaterule appendFormat:@"%@ AND ", format];
+                    continue;
+                }
+            }
+            [predicaterule appendString:format];
+        }
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:predicaterule argumentArray:predicateobjects];
+        _animelistarraycontroller.filterPredicate = predicate;
+    }
+}
+- (IBAction)refreshlist:(id)sender {
+    [self loadlist:true];
+}
+
+- (IBAction)animelistdoubleclick:(id)sender {
+    if ([_animelisttb clickedRow] >=0){
+        if ([_animelisttb clickedRow] >-1){
+            NSString *action = [[NSUserDefaults standardUserDefaults] valueForKey: @"listdoubleclickaction"];
+            NSDictionary *d = [[_animelistarraycontroller selectedObjects] objectAtIndex:0];
+            NSNumber * idnum = d[@"id"];
+            if ([action isEqualToString:@"View Anime Info"]){
+               [self loadanimeinfo:idnum.intValue];
+            }
+            else if([action isEqualToString:@"Modify Title"]){
+                
+            }
+        }
+    }
+}
+-(void)clearlist{
+    //Clears List
+    NSMutableArray * a = [_animelistarraycontroller content];
+    [a removeAllObjects];
+    [Utility deleteFile:@"animelist.json" appendpath:@""];
+    [_animelisttb reloadData];
+    [_animelisttb deselectAll:self];
+}
+-(NSArray *)obtainfilterstatus{
+    // Generates an array of selected filters
+    NSMutableArray * a = [NSMutableArray new];
+    NSMutableArray * final = [NSMutableArray new];
+    [a addObject:@{@"watching":@(_watchingfilter.state)}];
+    [a addObject:@{@"completed":@(_completedfilter.state)}];
+    [a addObject:@{@"on-hold":@(_onholdfilter.state)}];
+    [a addObject:@{@"dropped":@(_droppedfilter.state)}];
+    [a addObject:@{@"plan-to-watch":@(_plantowatchfilter.state)}];
+    for (NSDictionary *d in a){
+            NSNumber *add = [d objectForKey:[[d allKeys] objectAtIndex:0]];
+        if (add.boolValue){
+            [final addObject:d];
+        }
+    }
+    return final;
+}
+#pragma mark Title Information View
 -(void)loadanimeinfo:(int) idnum{
     int previd = selectedid;
     selectedid = 0;
@@ -352,5 +517,6 @@
 - (IBAction)viewonanilist:(id)sender {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/anime/%i",selectedid]]];
 }
+
 @end
 

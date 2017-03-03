@@ -9,7 +9,12 @@
         <customObject id="-2" userLabel="File's Owner" customClass="MainWindow">
             <connections>
                 <outlet property="animeinfoview" destination="C59-wX-gdu" id="j5p-QE-k4Z"/>
+                <outlet property="animelistarraycontroller" destination="mWb-w6-hzi" id="aul-bg-rUM"/>
+                <outlet property="animelistfilter" destination="KKI-5U-zIm" id="rxX-Rl-AtR"/>
+                <outlet property="animelisttb" destination="EK1-W7-f3l" id="Ive-rS-vIv"/>
                 <outlet property="animelistview" destination="3i9-yL-qQG" id="AMZ-w2-b0a"/>
+                <outlet property="completedfilter" destination="MwY-oK-6fE" id="gPO-ES-yfV"/>
+                <outlet property="droppedfilter" destination="wfc-6g-6L8" id="O0d-br-ybN"/>
                 <outlet property="infoviewalttitles" destination="C9a-DZ-IeB" id="fHh-LN-yq2"/>
                 <outlet property="infoviewdetailstextview" destination="YId-Bz-Wxt" id="8KO-01-oQP"/>
                 <outlet property="infoviewposterimage" destination="adJ-lN-u1Q" id="jfv-2p-Ocv"/>
@@ -18,8 +23,11 @@
                 <outlet property="mainview" destination="bkX-dG-MlV" id="hvu-zy-EK5"/>
                 <outlet property="noinfoview" destination="Idi-HR-8Ng" id="yub-Og-56z"/>
                 <outlet property="notloggedinview" destination="Bid-LM-YGW" id="X7P-bv-gBz"/>
+                <outlet property="onholdfilter" destination="Oy4-2S-514" id="Fcw-W3-0QG"/>
+                <outlet property="plantowatchfilter" destination="UgS-qr-B0W" id="fuR-Wo-YR2"/>
                 <outlet property="progressindicator" destination="nJp-pg-isf" id="mIT-I9-J37"/>
                 <outlet property="progressview" destination="K71-hX-Lqz" id="UxL-8a-2aR"/>
+                <outlet property="refreshlist" destination="6qy-e4-N2b" id="K7X-ly-jCN"/>
                 <outlet property="searcharraycontroller" destination="zFi-L7-BaW" id="Upl-me-s91"/>
                 <outlet property="searchtb" destination="0oH-PF-Un2" id="nQ0-YQ-a9Y"/>
                 <outlet property="searchtitlefield" destination="UGJ-OX-Y5p" id="oNQ-5C-6jX"/>
@@ -30,12 +38,13 @@
                 <outlet property="titlesearchfield" destination="UGJ-OX-Y5p" id="u9F-Kc-edI"/>
                 <outlet property="toolbar" destination="6eG-p3-l2S" id="wTZ-w8-9cJ"/>
                 <outlet property="w" destination="F0z-JX-Cv5" id="rtl-lI-YpK"/>
+                <outlet property="watchingfilter" destination="aaj-pp-NFm" id="Zk2-IB-XhR"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" frameAutosaveName="mainwindow" animationBehavior="default" id="F0z-JX-Cv5">
+        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="mainwindow" animationBehavior="default" tabbingMode="disallowed" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="700" height="450"/>
@@ -110,6 +119,9 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                         </button>
+                        <connections>
+                            <action selector="refreshlist:" target="-2" id="FLv-CC-yXx"/>
+                        </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="529EA505-EF71-499D-829A-2F9869EBDDCC" explicitItemIdentifier="ShareList" label="Share" paletteLabel="Share" toolTip="Share" image="NSShareTemplate" id="pus-xr-wEI">
                         <size key="minSize" width="8" height="25"/>
@@ -124,6 +136,7 @@
                         </button>
                         <connections>
                             <action selector="sharetitle:" target="-2" id="ABN-xD-us2"/>
+                            <binding destination="mWb-w6-hzi" name="enabled" keyPath="selection.@count" id="r3y-s7-bTE"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="22093AE0-3D95-4384-8267-78CAA08B0B3C" explicitItemIdentifier="AddTitleInfo" label="Add Title" paletteLabel="Add Title" toolTip="Add Title" image="NSAddTemplate" id="qiG-Dd-1QN">
@@ -184,6 +197,9 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <binding destination="mWb-w6-hzi" name="enabled" keyPath="selectedObjects.@count" id="dpj-6H-I65"/>
+                            </connections>
                         </button>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="592B486B-1906-4FCE-A1B7-A21E0C346794" explicitItemIdentifier="filter" label="Filter" paletteLabel="Filter" id="nBW-W8-5VV">
@@ -198,6 +214,9 @@
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </searchFieldCell>
+                            <connections>
+                                <action selector="filterperform:" target="-2" id="XI8-8e-PkY"/>
+                            </connections>
                         </searchField>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="405D4DDB-1D52-4DF2-95F5-DB3C2BBBA108" explicitItemIdentifier="search" label="Title Search" paletteLabel="Title Search" id="A84-pG-n29">
@@ -228,6 +247,9 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                         </button>
+                        <connections>
+                            <binding destination="mWb-w6-hzi" name="enabled" keyPath="selectedObjects.@count" id="oHm-Dr-tBg"/>
+                        </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="D2F2B7CC-8D28-4977-93C7-65766691DE77" explicitItemIdentifier="viewonmal" label="View on AniList" paletteLabel="View on AniList" toolTip="View on MyAnimeList" image="Info" id="Xo3-FI-FWS">
                         <size key="minSize" width="8" height="25"/>
@@ -505,6 +527,13 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="mWb-w6-hzi" name="value" keyPath="arrangedObjects.title_romaji" id="xcM-9B-4I3">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
                                     </tableColumn>
                                     <tableColumn identifier="Episodes" editable="NO" width="60" minWidth="60" maxWidth="60" id="OJ1-VK-bLq">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Watched">
@@ -518,6 +547,18 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="mWb-w6-hzi" name="displayPatternValue2" keyPath="arrangedObjects.episodes" previousBinding="zOB-aO-I20" id="ysg-FV-VYt">
+                                                <dictionary key="options">
+                                                    <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
+                                                </dictionary>
+                                            </binding>
+                                            <binding destination="mWb-w6-hzi" name="displayPatternValue1" keyPath="arrangedObjects.watched_episodes" id="zOB-aO-I20">
+                                                <dictionary key="options">
+                                                    <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
                                     </tableColumn>
                                     <tableColumn editable="NO" width="55" minWidth="10" maxWidth="70" id="nzr-Sb-6yi">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Progress">
@@ -529,6 +570,10 @@
                                             <font key="font" metaFont="smallSystem"/>
                                         </levelIndicatorCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="mWb-w6-hzi" name="maxValue" keyPath="arrangedObjects.episodes" id="dBo-rK-See"/>
+                                            <binding destination="mWb-w6-hzi" name="value" keyPath="arrangedObjects.watched_episodes" previousBinding="dBo-rK-See" id="qgl-OM-uiY"/>
+                                        </connections>
                                     </tableColumn>
                                     <tableColumn editable="NO" width="50" minWidth="50" maxWidth="50" id="6gC-cr-0M2">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Score">
@@ -542,6 +587,13 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="mWb-w6-hzi" name="value" keyPath="arrangedObjects.score" id="c0T-mM-apd">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
                                     </tableColumn>
                                     <tableColumn identifier="type" editable="NO" width="60" minWidth="60" maxWidth="60" id="CDj-gj-FMy">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Type">
@@ -555,6 +607,13 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="mWb-w6-hzi" name="value" keyPath="arrangedObjects.type" id="cxv-2Y-hMk">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
                                     </tableColumn>
                                     <tableColumn identifier="watchstatus" editable="NO" width="92" minWidth="10" maxWidth="3.4028234663852886e+38" id="jkj-ok-M4J">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Status">
@@ -568,8 +627,18 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="mWb-w6-hzi" name="value" keyPath="arrangedObjects.watched_status" id="X1I-1C-igM">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
                                     </tableColumn>
                                 </tableColumns>
+                                <connections>
+                                    <action trigger="doubleAction" selector="animelistdoubleclick:" target="-2" id="mvU-NY-LcU"/>
+                                </connections>
                             </tableView>
                         </subviews>
                     </clipView>
@@ -597,6 +666,10 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                 <font key="font" metaFont="miniSystem"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="filterperform:" target="-2" id="wMu-Od-1aA"/>
+                                <binding destination="2F9-Ng-hjJ" name="value" keyPath="values.watchingfilter" id="vHr-Nz-XRT"/>
+                            </connections>
                         </button>
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oy4-2S-514">
                             <rect key="frame" x="195" y="3" width="86" height="17"/>
@@ -605,6 +678,10 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                 <font key="font" metaFont="miniSystem"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="filterperform:" target="-2" id="gfg-8r-BWp"/>
+                                <binding destination="2F9-Ng-hjJ" name="value" keyPath="values.onholdfilter" id="8Rn-Ve-0Im"/>
+                            </connections>
                         </button>
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wfc-6g-6L8">
                             <rect key="frame" x="284" y="3" width="92" height="17"/>
@@ -613,6 +690,10 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                 <font key="font" metaFont="miniSystem"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="filterperform:" target="-2" id="ech-yX-xh6"/>
+                                <binding destination="2F9-Ng-hjJ" name="value" keyPath="values.droppedfilter" id="sc6-z1-iMP"/>
+                            </connections>
                         </button>
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UgS-qr-B0W">
                             <rect key="frame" x="379" y="3" width="103" height="17"/>
@@ -621,6 +702,10 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                 <font key="font" metaFont="miniSystem"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="filterperform:" target="-2" id="rnX-cj-twS"/>
+                                <binding destination="2F9-Ng-hjJ" name="value" keyPath="values.plantowatchfilter" id="fuP-T4-oLd"/>
+                            </connections>
                         </button>
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MwY-oK-6fE">
                             <rect key="frame" x="96" y="3" width="96" height="17"/>
@@ -629,12 +714,21 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                 <font key="font" metaFont="miniSystem"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="filterperform:" target="-2" id="ij5-fR-8RF"/>
+                                <binding destination="2F9-Ng-hjJ" name="value" keyPath="values.completedfilter" id="xqF-Qp-wtG"/>
+                            </connections>
                         </button>
                     </subviews>
                 </visualEffectView>
             </subviews>
-            <point key="canvasLocation" x="211" y="729"/>
+            <point key="canvasLocation" x="-28" y="507"/>
         </customView>
+        <arrayController objectClassName="NSDictionary" editable="NO" id="mWb-w6-hzi">
+            <declaredKeys>
+                <string>allValues</string>
+            </declaredKeys>
+        </arrayController>
         <visualEffectView appearanceType="vibrantLight" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" id="K71-hX-Lqz" userLabel="ProgressView">
             <rect key="frame" x="0.0" y="0.0" width="549" height="434"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -918,7 +1012,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" ambiguous="YES" id="EUC-6r-NMV">
                         <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="seasontb" headerView="lcO-cB-Nug" id="oys-2G-zkA">
                                 <rect key="frame" x="0.0" y="0.0" width="562" height="378"/>
@@ -1148,6 +1242,7 @@
                 <string>allValues</string>
             </declaredKeys>
         </arrayController>
+        <userDefaultsController representsSharedInstance="YES" id="2F9-Ng-hjJ"/>
     </objects>
     <resources>
         <image name="Edit" width="32" height="32"/>

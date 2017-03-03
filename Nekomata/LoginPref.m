@@ -69,6 +69,7 @@
 		//Disable Clearbut
 		[clearbut setEnabled: NO];
 		[savebut setEnabled: YES];
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"loggedinuserid"];
 	}
 }
 -(IBAction)startlogin:(id)sender
@@ -97,6 +98,7 @@
         [loggedinview setHidden:NO];
         [loginview setHidden:YES];
         [self refreshmainview];
+        [self refreshList];
         [self retrieveuserdetails];
     }
                                                failure:^(NSError *error) {
@@ -137,6 +139,8 @@
             // Refresh Mainview and remove userinfo
             [self refreshmainview];
             [Utility deleteFile:@"userinfo.json" appendpath:@""];
+            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"loggedinuserid"];
+            [self removelist];
         }
         }];
 }
@@ -176,6 +180,14 @@ Pin Panel
     MainWindow * mainwindowcontroller = [appdelegate getMainWindowController];
     [mainwindowcontroller loadmainview];
 }
+-(void)refreshList{
+    MainWindow * mainwindowcontroller = [appdelegate getMainWindowController];
+    [mainwindowcontroller refreshlist:self];
+}
+-(void) removelist {
+    MainWindow * mainwindowcontroller = [appdelegate getMainWindowController];
+    [mainwindowcontroller clearlist];
+}
 -(void)loaduserdetails{
     id details = [Utility loadJSON:@"userinfo.json" appendpath:@""];
     if (details){
@@ -197,6 +209,7 @@ Pin Panel
     NSDictionary * d = object;
     if (d[@"display_name"] != [NSNull null]){
         loggedinuser.stringValue = d[@"display_name"];
+        [[NSUserDefaults standardUserDefaults] setObject:d[@"id"] forKey:@"loggedinuserid"];
     }
 }
 -(void)retrieveuserdetails{

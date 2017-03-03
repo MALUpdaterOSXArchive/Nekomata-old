@@ -16,6 +16,19 @@
 
 @implementation AppDelegate
 +(void)initialize{
+    
+    //Create a Dictionary
+    NSMutableDictionary * defaultValues = [NSMutableDictionary dictionary];
+    
+    // Defaults
+    defaultValues[@"watchingfilter"] = @(1);
+    defaultValues[@"listdoubleclickaction"] = @"Modify Title";
+    defaultValues[@"refreshonstart"] = @(0);
+    defaultValues[@"appearence"] = @"Light";
+    
+    //Register Dictionary
+    [[NSUserDefaults standardUserDefaults]
+     registerDefaults:defaultValues];
 
     
 }
@@ -43,10 +56,11 @@
 {
     if (_preferencesWindowController == nil)
     {
-        NSViewController *generalViewController = [[GeneralPref alloc] init];
+        GeneralPref * genview =[[GeneralPref alloc] init];
+        [genview setMainWindowController:mainwindowcontroller];
         NSViewController *loginViewController = [[LoginPref alloc] initwithAppDelegate:self];
         NSViewController *suViewController = [[SoftwareUpdatesPref alloc] init];
-        NSArray *controllers = @[generalViewController,loginViewController,suViewController];
+        NSArray *controllers = @[genview,loginViewController,suViewController];
         _preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:controllers];
     }
     return _preferencesWindowController;

@@ -25,6 +25,17 @@
     // Title Info
     int selectedid;
 }
+//Anime List View
+@property (strong) IBOutlet NSArrayController *animelistarraycontroller;
+@property (strong) IBOutlet NSTableView *animelisttb;
+@property (strong) IBOutlet NSButton *watchingfilter;
+@property (strong) IBOutlet NSButton *completedfilter;
+@property (strong) IBOutlet NSButton *onholdfilter;
+@property (strong) IBOutlet NSButton *droppedfilter;
+@property (strong) IBOutlet NSButton *plantowatchfilter;
+@property (strong) IBOutlet NSSearchField *animelistfilter;
+
+//Search View
 @property (strong) IBOutlet NSToolbar *toolbar;
 @property (strong) IBOutlet NSView *mainview;
 @property (nonatomic, assign) AppDelegate *app;
@@ -50,6 +61,13 @@
 - (IBAction)PerformAddTitle:(id)sender;
 - (IBAction)sharetitle:(id)sender;
 -(void)loadmainview;
+-(void)setAppearence;
+
+//Anime List View
+- (IBAction)refreshlist:(id)sender;
+- (IBAction)animelistdoubleclick:(id)sender;
+-(void)clearlist;
+- (IBAction)filterperform:(id)sender;
 //Search View
 - (IBAction)performsearch:(id)sender;
 - (IBAction)searchtbdoubleclick:(id)sender;

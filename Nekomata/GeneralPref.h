@@ -8,7 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 #import <MASPreferences/MASPreferences.h>
-
-@interface GeneralPref : NSViewController <MASPreferencesViewController>
+@class MainWindow;
+@interface GeneralPref : NSViewController <MASPreferencesViewController>{
+    MainWindow * mainwindowcontroller;
+}
+- (IBAction)changeappearence:(id)sender;
+-(void)setMainWindowController:(MainWindow*)mw;
 
 @end
