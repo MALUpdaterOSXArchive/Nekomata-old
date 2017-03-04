@@ -59,6 +59,18 @@
             [newitem setObject:details[@"type"] forKey:@"type"];
             [newitem setObject:details[@"total_episodes"] forKey:@"episodes"];
             [newitem setObject:details[@"airing_status"] forKey:@"status"];
+            if (details[@"advanced_rating_scores"]){
+            [newitem setObject:details[@"advanced_rating_scores"] forKey:@"advanced_rating_scores"];
+            }
+            else{
+                [newitem setObject:[NSArray new] forKey:@"advanced_rating_scores"];
+            }
+            if (!details[@"notes"]){
+                [newitem setObject:[NSNull null] forKey:@"notes"];
+            }
+            else{
+                [newitem setObject:details[@"notes"] forKey:@"notes"];
+            }
             [newitem setObject:item[@"custom_lists"] forKey:@"custom_lists"];
             [fulllist addObject:newitem];
         }

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
-#import "AFOAuthCredential.h"
+#import "AFOAuth2Manager.h"
 
 @interface Utility : NSObject
 +(void)showsheetmessage:(NSString *)message
@@ -21,4 +21,5 @@
 +(id)loadJSON:(NSString *)filename appendpath:(NSString*)appendpath;
 +(bool)deleteFile:(NSString *)filename appendpath:(NSString*)appendpath;
 +(NSString *)appendstringwithArray:(NSArray *) a;
++(void)performTokenRefresh:(id)target forSelector:(NSString *)selector withObject:(id)object;
 @end

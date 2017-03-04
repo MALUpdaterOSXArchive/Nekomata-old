@@ -38,10 +38,10 @@
     mainwindowcontroller = [MainWindow new];
     [mainwindowcontroller setDelegate:self];
     [mainwindowcontroller.window makeKeyAndOrderFront:self];
-    if ([self credentialexist]){
+    /*if ([self credentialexist]){
         [self startoauthtimer];
         [oauthrefreshtimer fire];
-    }
+    }*/
     [self showloginnotice];
 }
 
@@ -79,26 +79,8 @@
     AFOAuthCredential *credential =
     [AFOAuthCredential retrieveCredentialWithIdentifier:@"Nekomata"];
     if ([[credential getExpiredDate] timeIntervalSinceNow] < -10){
-        [self performTokenRefresh];
+        //[self performTokenRefresh];
     }
-}
--(void)performTokenRefresh{
-    AFOAuthCredential *cred =
-    [AFOAuthCredential retrieveCredentialWithIdentifier:@"Nekomata"];
-    NSURL *baseURL = [NSURL URLWithString:@"https://anilist.co/api/"];
-    AFOAuth2Manager *OAuth2Manager = [[AFOAuth2Manager alloc] initWithBaseURL:baseURL
-                                    clientID:kclient
-                                      secret:ksecretkey];
-    [OAuth2Manager setUseHTTPBasicAuthentication:NO];
-     [OAuth2Manager authenticateUsingOAuthWithURLString:@"auth/access_token" parameters:@{@"grant_type":@"refresh_token", @"refresh_token":cred.refreshToken} success:^(AFOAuthCredential *credential) {
-        NSLog(@"Token refreshed");
-         [AFOAuthCredential storeCredential:credential
-                             withIdentifier:@"Nekomata"];
-    }
-   failure:^(NSError *error) {
-       NSLog(@"Token cannot be refreshed: %@", error);
-   }];
-
 }
 -(bool)credentialexist{
     AFOAuthCredential *credential =

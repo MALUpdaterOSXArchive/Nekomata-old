@@ -7,6 +7,7 @@
 //
 
 #import "Utility.h"
+#import "ClientConstants.h"
 
 @implementation Utility
 +(void)showsheetmessage:(NSString *)message
@@ -121,5 +122,25 @@
         }
     }
     return string;
+}
++(void)performTokenRefresh:(id)target forSelector:(NSString *)selector withObject:(id)object{
+    __block SEL aSelector = NSSelectorFromString(selector);
+    AFOAuthCredential *cred =
+    [AFOAuthCredential retrieveCredentialWithIdentifier:@"Nekomata"];
+    NSURL *baseURL = [NSURL URLWithString:@"https://anilist.co/api/"];
+    AFOAuth2Manager *OAuth2Manager = [[AFOAuth2Manager alloc] initWithBaseURL:baseURL
+                                                                     clientID:kclient
+                                                                       secret:ksecretkey];
+    [OAuth2Manager setUseHTTPBasicAuthentication:NO];
+    [OAuth2Manager authenticateUsingOAuthWithURLString:@"auth/access_token" parameters:@{@"grant_type":@"refresh_token", @"refresh_token":cred.refreshToken} success:^(AFOAuthCredential *credential) {
+        NSLog(@"Token refreshed");
+        [AFOAuthCredential storeCredential:credential
+                            withIdentifier:@"Nekomata"];
+        [NSThread sleepForTimeInterval:10];
+        [target performSelector:aSelector withObject:object];
+    }
+                                               failure:^(NSError *error) {
+                                                   NSLog(@"Token cannot be refreshed: %@", error);
+                                               }];
 }
 @end

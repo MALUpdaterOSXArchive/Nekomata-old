@@ -11,6 +11,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "AFOAuth2Manager.h"
 #import "Utility.h"
+#import "NSTextFieldNumber.h"
 
 
 @class AppDelegate;
@@ -24,6 +25,11 @@
     IBOutlet NSTableView *searchtb;
     // Title Info
     int selectedid;
+    int selectededitid;
+    bool selectedaired;
+    bool selectedaircompleted;
+    NSDictionary * selecteditem;
+    NSDictionary * selectedanimeinfo;
 }
 //Anime List View
 @property (strong) IBOutlet NSArrayController *animelistarraycontroller;
@@ -54,6 +60,16 @@
 @property (strong) IBOutlet NSTextView *infoviewdetailstextview;
 @property (strong) IBOutlet NSTextView *infoviewsynopsistextview;
 @property (strong) IBOutlet NSImageView *infoviewposterimage;
+// Edit Popover
+@property (strong) IBOutlet NSTextFieldNumber *minipopoverepfield;
+@property (strong) IBOutlet NSTextField *minipopovertotalep;
+@property (strong) IBOutlet NSPopUpButton *minipopoverstatus;
+@property (strong) IBOutlet NSTextField *minipopoverscore;
+@property (strong) IBOutlet NSTextField *minipopoverstatustext;
+@property (strong) IBOutlet NSProgressIndicator *minipopoverindicator;
+@property (strong) IBOutlet NSButton *minipopovereditbtn;
+@property (strong) IBOutlet NSPopover *minieditpopover;
+
 
 
 //Public Methods
@@ -74,5 +90,9 @@
 - (IBAction)searchtbdoubleclick:(id)sender;
 // Info View
 - (IBAction)viewonanilist:(id)sender;
+// Modify Popover
+- (IBAction)performmodifytitle:(id)sender;
+- (IBAction)performupdatetitle:(id)sender;
+
 
 @end

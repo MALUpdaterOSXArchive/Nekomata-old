@@ -48,9 +48,9 @@
       [searchItem setIcon:[NSImage imageNamed:@"search"]];
     PXSourceListItem *titleinfoItem = [PXSourceListItem itemWithTitle:@"Title Info" identifier:@"titleinfo"];
     [titleinfoItem setIcon:[NSImage imageNamed:@"animeinfo"]];
-    PXSourceListItem *seasonsItem = [PXSourceListItem itemWithTitle:@"Seasons" identifier:@"seasons"];
-    [seasonsItem setIcon:[NSImage imageNamed:@"seasons"]];
- [discoverItem setChildren:[NSArray arrayWithObjects:searchItem, titleinfoItem,seasonsItem, nil]];
+    //PXSourceListItem *seasonsItem = [PXSourceListItem itemWithTitle:@"Seasons" identifier:@"seasons"];
+    //[seasonsItem setIcon:[NSImage imageNamed:@"seasons"]];
+ [discoverItem setChildren:[NSArray arrayWithObjects:searchItem, titleinfoItem/*,seasonsItem*/, nil]];
    
    // Populate Source List
     [self.sourceListItems addObject:libraryItem];
@@ -95,7 +95,9 @@
 
 - (IBAction)PerformAddTitle:(id)sender {
 }
-
+-(void)addtitle:(int)titleid{
+    
+}
 - (IBAction)sharetitle:(id)sender {
 }
 
@@ -273,6 +275,7 @@
             [self populatesearchtb:responseObject];
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             NSLog(@"Error: %@", error);
+            [Utility performTokenRefresh:self forSelector:@"performsearch:" withObject:sender];
         }];
     }
     else{
@@ -288,7 +291,7 @@
         if ([searchtb clickedRow] >-1){
             NSDictionary *d = [[searcharraycontroller selectedObjects] objectAtIndex:0];
             NSNumber * idnum = d[@"id"];
-            [self loadanimeinfo:idnum.intValue];
+            [self loadanimeinfo:idnum];
         }
     }
 }
@@ -300,15 +303,15 @@
     [searchtb deselectAll:self];
 }
 #pragma mark Anime List
--(void)loadlist:(bool)refresh{
+-(void)loadlist:(NSNumber *)refresh{
     id list = [Utility loadJSON:@"animelist.json" appendpath:@""];
-    if (list == nil || refresh){
+    if (list == nil || refresh.boolValue){
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:[NSString stringWithFormat:@"https://anilist.co/api/user/%@/animelist/", [[NSUserDefaults standardUserDefaults] valueForKey:@"loggedinuserid"]] parameters:@{@"access_token":[Utility getToken]} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         [self populateList:[Utility saveJSON:[ListProcess processAnimeList:responseObject] withFilename:@"animelist.json" appendpath:@"" replace:TRUE]];
     
     } failure:^(NSURLSessionTask *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
+            [Utility performTokenRefresh:self forSelector:@"loadlist:" withObject:refresh];
     }];
     }
     else{
@@ -397,7 +400,7 @@
     }
 }
 - (IBAction)refreshlist:(id)sender {
-    [self loadlist:true];
+    [self loadlist:@(true)];
 }
 
 - (IBAction)animelistdoubleclick:(id)sender {
@@ -405,12 +408,12 @@
         if ([_animelisttb clickedRow] >-1){
             NSString *action = [[NSUserDefaults standardUserDefaults] valueForKey: @"listdoubleclickaction"];
             NSDictionary *d = [[_animelistarraycontroller selectedObjects] objectAtIndex:0];
-            NSNumber * idnum = d[@"id"];
             if ([action isEqualToString:@"View Anime Info"]){
-               [self loadanimeinfo:idnum.intValue];
+                NSNumber * idnum = d[@"id"];
+               [self loadanimeinfo:idnum];
             }
             else if([action isEqualToString:@"Modify Title"]){
-                
+                [self showEditPopover:d showRelativeToRec:[_animelisttb frameOfCellAtColumn:0 row:[_animelisttb selectedRow]] ofView:_animelisttb preferredEdge:0];
             }
         }
     }
@@ -431,7 +434,7 @@
     [a addObject:@{@"completed":@(_completedfilter.state)}];
     [a addObject:@{@"on-hold":@(_onholdfilter.state)}];
     [a addObject:@{@"dropped":@(_droppedfilter.state)}];
-    [a addObject:@{@"plan-to-watch":@(_plantowatchfilter.state)}];
+    [a addObject:@{@"plan to watch":@(_plantowatchfilter.state)}];
     for (NSDictionary *d in a){
             NSNumber *add = [d objectForKey:[[d allKeys] objectAtIndex:0]];
         if (add.boolValue){
@@ -440,8 +443,84 @@
     }
     return final;
 }
+#pragma mark Edit Popover
+-(void)showEditPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge{
+    selecteditem = d;
+    NSString *airingstatus = d[@"status"];
+    if ([airingstatus isEqualToString:@"finished airing"]){
+        selectedaircompleted = true;
+    }
+    else{
+        selectedaircompleted = false;
+    }
+    if ([airingstatus isEqualToString:@"finished airing"]||[airingstatus isEqualToString:@"currently airing"]){
+        selectedaired = true;
+    }
+    else{
+        selectedaired = false;
+    }
+    [_minipopoverepfield setIntValue:[(NSNumber *)d[@"watched_episodes"] intValue]];
+    [_minipopovertotalep setIntValue:[(NSNumber *)d[@"episodes"] intValue]];
+    [_minipopoverstatus selectItemWithTitle:d[@"watched_status"]];
+    [_minipopoverscore setIntValue:[(NSNumber *)d[@"score_raw"] floatValue]];
+    [_minipopoverstatustext setStringValue:@""];
+    selectededitid = [(NSNumber *)d[@"id"] intValue];
+    [_minieditpopover showRelativeToRect:rect ofView:view preferredEdge:rectedge];
+}
+
+- (IBAction)performmodifytitle:(id)sender {
+    NSIndexSet *selectedIndexes = [sourceList selectedRowIndexes];
+    NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
+    if ([identifier isEqualToString:@"animelist"]){
+           NSDictionary *d = [[_animelistarraycontroller selectedObjects] objectAtIndex:0];
+        [self showEditPopover:d showRelativeToRec:[_animelisttb frameOfCellAtColumn:0 row:[_animelisttb selectedRow]] ofView:_animelisttb preferredEdge:0];
+    }
+    else if ([identifier isEqualToString:@"titleinfo"]){
+        [self showEditPopover:selectedanimeinfo showRelativeToRec:[sender bounds] ofView:sender preferredEdge:0];
+    }
+}
+
+- (IBAction)performupdatetitle:(id)sender {
+    [self performupdate];
+}
+-(void)performupdate{
+    [_minipopovereditbtn setEnabled:false];
+    [_minipopoverstatustext setStringValue:@""];
+    if(![_minipopoverstatus.title isEqual:@"completed"] && _minipopoverepfield.intValue == _minipopovertotalep.intValue){
+        [_minipopoverstatus selectItemWithTitle:@"completed"];
+    }
+    if(!selectedaired && ([_minipopoverstatus.title isEqual:@"plan to watch"] ||_minipopoverepfield.intValue > 0)){
+        // Invalid input, mark it as such
+        [_minipopovereditbtn setEnabled:true];
+        [_minipopoverstatustext setStringValue:@"Invalid update."];
+        [_minieditpopover setBehavior:NSPopoverBehaviorTransient];
+        [_minipopoverindicator stopAnimation:nil];
+        return;
+    }
+    if (_minipopoverepfield.intValue == _minipopovertotalep.intValue && _minipopovertotalep.intValue != 0){
+        [_minipopoverstatus selectItemWithTitle:@"completed"];
+        [_minipopoverepfield setIntValue:[_minipopovertotalep intValue]];
+    }
+    [_minieditpopover setBehavior:NSPopoverBehaviorApplicationDefined];
+    [_minipopoverindicator startAnimation:nil];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", [Utility getToken]] forHTTPHeaderField:@"Authorization"];
+    [manager PUT:@"https://anilist.co/api/animelist/" parameters:@{@"id":@(selectededitid), @"list_status":_minipopoverstatus.title, @"score":@(0), @"score_raw":@(_minipopoverscore.intValue), @"episodes_watched":@(_minipopoverepfield.intValue),  @"rewatched":selecteditem[@"rewatched"], @"notes":selecteditem[@"notes"], @"advanced_rating_scores":selecteditem[@"advanced_rating_scores"], @"custom_lists":selecteditem[@"custom_lists"],  @"hidden_default":selecteditem[@"hidden_default"]} success:^(NSURLSessionTask *task, id responseObject) {
+        [self loadlist:@(true)];
+         [_minipopovereditbtn setEnabled:true];
+        [_minieditpopover setBehavior:NSPopoverBehaviorTransient];
+        [_minipopoverindicator stopAnimation:nil];
+        [_minieditpopover close];
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+         [_minipopovereditbtn setEnabled:true];
+        [_minieditpopover setBehavior:NSPopoverBehaviorTransient];
+        [_minipopoverindicator stopAnimation:nil];
+        [Utility performTokenRefresh:self forSelector:@"performupdate" withObject:nil];
+        [_minipopoverstatustext setStringValue:@"Error"];
+    }];
+}
 #pragma mark Title Information View
--(void)loadanimeinfo:(int) idnum{
+-(void)loadanimeinfo:(NSNumber *) idnum{
     int previd = selectedid;
     selectedid = 0;
      [sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:4]byExtendingSelection:false];
@@ -450,8 +529,8 @@
     [_progressindicator setHidden: NO];
     [_progressindicator startAnimation:nil];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:[NSString stringWithFormat:@"https://anilist.co/api/anime/%i",idnum] parameters:@{@"access_token":[Utility getToken]} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        selectedid = idnum;
+    [manager GET:[NSString stringWithFormat:@"https://anilist.co/api/anime/%i",idnum.intValue] parameters:@{@"access_token":[Utility getToken]} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        selectedid = idnum.intValue;
         [_progressindicator stopAnimation:nil];
         [self populateInfoView:responseObject];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
@@ -487,6 +566,7 @@
     [_infoviewdetailstextview setString:details];
     [_infoviewsynopsistextview setString:[synopsis stripHtml]];
     [self loadmainview];
+    selectedanimeinfo = d;
 }
 - (IBAction)viewonanilist:(id)sender {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/anime/%i",selectedid]]];

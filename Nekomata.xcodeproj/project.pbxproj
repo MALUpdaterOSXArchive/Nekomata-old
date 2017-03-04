@@ -22,6 +22,7 @@
 		2D6481C31E669E7900984550 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6481BC1E6695C800984550 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2DA2E12C1E67B76D000B0DA4 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA2E12B1E67B76D000B0DA4 /* MSWeakTimer.m */; };
 		2DBBC3901E68F3730085FB80 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2DBBC38F1E68F3730085FB80 /* Credits.rtf */; };
+		2DDB15BE1E6B4B3100ECCB3B /* NSTextFieldNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDB15BD1E6B4B3100ECCB3B /* NSTextFieldNumber.m */; };
 		2DF5021C1E674D1E008EC236 /* SoftwareUpdatesPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5021B1E674D1E008EC236 /* SoftwareUpdatesPref.m */; };
 		2DF5021F1E674D42008EC236 /* LoginPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5021E1E674D42008EC236 /* LoginPref.m */; };
 		2DF502211E674D4B008EC236 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DF502201E674D4B008EC236 /* LoginView.xib */; };
@@ -91,6 +92,8 @@
 		2DA2E12A1E67B76D000B0DA4 /* MSWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSWeakTimer.h; sourceTree = "<group>"; };
 		2DA2E12B1E67B76D000B0DA4 /* MSWeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSWeakTimer.m; sourceTree = "<group>"; };
 		2DBBC38F1E68F3730085FB80 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		2DDB15BC1E6B4B3100ECCB3B /* NSTextFieldNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTextFieldNumber.h; sourceTree = "<group>"; };
+		2DDB15BD1E6B4B3100ECCB3B /* NSTextFieldNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSTextFieldNumber.m; sourceTree = "<group>"; };
 		2DF502171E674CCD008EC236 /* MASPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MASPreferences.framework; sourceTree = "<group>"; };
 		2DF502191E674D1E008EC236 /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
 		2DF5021A1E674D1E008EC236 /* SoftwareUpdatesPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareUpdatesPref.h; sourceTree = "<group>"; };
@@ -168,6 +171,8 @@
 				2D6481BB1E6695B200984550 /* Frameworks */,
 				2D6481971E66950900984550 /* AppDelegate.h */,
 				2D6481981E66950900984550 /* AppDelegate.m */,
+				2DDB15BC1E6B4B3100ECCB3B /* NSTextFieldNumber.h */,
+				2DDB15BD1E6B4B3100ECCB3B /* NSTextFieldNumber.m */,
 				2DF5023A1E675998008EC236 /* AniList.h */,
 				2DF5023B1E675998008EC236 /* AniList.m */,
 				2D6481B61E66957400984550 /* MainWindow.h */,
@@ -374,6 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DF5023C1E675998008EC236 /* AniList.m in Sources */,
+				2DDB15BE1E6B4B3100ECCB3B /* NSTextFieldNumber.m in Sources */,
 				2DF502511E6765B7008EC236 /* AFOAuthCredential.m in Sources */,
 				2DF502501E6765B7008EC236 /* AFOAuth2Manager.m in Sources */,
 				2DF502271E674DBF008EC236 /* Utility.m in Sources */,
