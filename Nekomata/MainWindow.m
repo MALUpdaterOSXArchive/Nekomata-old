@@ -253,7 +253,12 @@
         }
         else if ([identifier isEqualToString:@"titleinfo"]){
             if (selectedid > 0){
-                [_toolbar insertItemWithItemIdentifier:@"AddTitleInfo" atIndex:0];
+                if ([self checkiftitleisonlist:selectedid]){
+                     [_toolbar insertItemWithItemIdentifier:@"editInfo" atIndex:0];
+                }
+                else{
+                    [_toolbar insertItemWithItemIdentifier:@"AddTitleInfo" atIndex:0];
+                }
                 [_toolbar insertItemWithItemIdentifier:@"viewonmal" atIndex:1];
                 [_toolbar insertItemWithItemIdentifier:@"ShareInfo" atIndex:2];
             }
@@ -476,7 +481,7 @@
         [self showEditPopover:d showRelativeToRec:[_animelisttb frameOfCellAtColumn:0 row:[_animelisttb selectedRow]] ofView:_animelisttb preferredEdge:0];
     }
     else if ([identifier isEqualToString:@"titleinfo"]){
-        [self showEditPopover:selectedanimeinfo showRelativeToRec:[sender bounds] ofView:sender preferredEdge:0];
+        [self showEditPopover:[self retreveentryfromlist:selectedid]showRelativeToRec:[sender bounds] ofView:sender preferredEdge:0];
     }
 }
 
@@ -570,6 +575,22 @@
 }
 - (IBAction)viewonanilist:(id)sender {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/anime/%i",selectedid]]];
+}
+-(bool)checkiftitleisonlist:(int)idnum{
+    NSArray * list = [_animelistarraycontroller content];
+    list = [list filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %i", idnum]];
+    if ([list count] > 0){
+        return true;
+    }
+    return false;
+}
+-(id)retreveentryfromlist:(int)idnum{
+    NSArray * list = [_animelistarraycontroller content];
+    list = [list filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %i", idnum]];
+    if ([list count] > 0){
+        return [list objectAtIndex:0];
+    }
+    return nil;
 }
 
 @end
