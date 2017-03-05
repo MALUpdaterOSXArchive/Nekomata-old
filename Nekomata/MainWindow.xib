@@ -255,7 +255,7 @@
                             </connections>
                         </button>
                         <connections>
-                            <action selector="addtitle:" target="-2" id="BNY-4X-Lne"/>
+                            <action selector="showaddpopover:" target="-2" id="ura-2a-B0E"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="B87F1C55-7DD2-41B7-A147-4F8E4368E4A2" explicitItemIdentifier="DeleteTitle" label="Delete Title" paletteLabel="Delete Title" toolTip="Delete Title" image="delete" id="WJo-Ig-ng6">

@@ -354,13 +354,7 @@
                 </menuItem>
                 <menuItem title="AniList" id="5I0-5K-vVf">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="AniList" id="R12-wg-fol">
-                        <items>
-                            <menuItem title="Item" id="GZq-wb-Few">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                        </items>
-                    </menu>
+                    <menu key="submenu" title="AniList" id="R12-wg-fol"/>
                 </menuItem>
                 <menuItem title="View" id="H8h-7b-M4v">
                     <modifierMask key="keyEquivalentModifierMask"/>

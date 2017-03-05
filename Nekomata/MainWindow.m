@@ -490,7 +490,7 @@
     NSNumber * selid = d[@"id"];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", [Utility getToken]] forHTTPHeaderField:@"Authorization"];
-    manager.responseSerializer.acceptableContentTypes  = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer = [AFHTTPResponseSerializer new];
     [manager DELETE:[NSString stringWithFormat:@"https://anilist.co/api/animelist/%i", selid.intValue] parameters:nil success:^(NSURLSessionTask *task, id responseObject) {
         [self loadlist:@(true)];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
@@ -579,10 +579,6 @@
     }];
 }
 #pragma mark Add Title
-
-- (IBAction)addtitle:(id)sender {
- 
-}
 
 - (IBAction)showaddpopover:(id)sender {
     NSIndexSet *selectedIndexes = [sourceList selectedRowIndexes];
