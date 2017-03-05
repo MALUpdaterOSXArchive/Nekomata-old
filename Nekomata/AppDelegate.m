@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "Preferences.h"
 #import "ClientConstants.h"
+#import "PFMoveApplication.h"
 
 @interface AppDelegate ()
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
@@ -23,7 +24,7 @@
     // Defaults
     defaultValues[@"watchingfilter"] = @(1);
     defaultValues[@"listdoubleclickaction"] = @"Modify Title";
-    defaultValues[@"refreshonstart"] = @(0);
+    defaultValues[@"refreshlistonstart"] = @(0);
     defaultValues[@"appearence"] = @"Light";
     
     //Register Dictionary
@@ -33,6 +34,11 @@
     
 }
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    // Ask to move application
+#ifdef DEBUG
+#else
+    PFMoveToApplicationsFolderIfNecessary();
+    #endif
     // Load main window
     mainwindowcontroller = [MainWindow new];
     [mainwindowcontroller setDelegate:self];

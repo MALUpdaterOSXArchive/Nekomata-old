@@ -20,6 +20,7 @@
 +(id)saveJSON:(id) object withFilename:(NSString*) filename appendpath:(NSString*)appendpath replace:(bool)replace;
 +(id)loadJSON:(NSString *)filename appendpath:(NSString*)appendpath;
 +(bool)deleteFile:(NSString *)filename appendpath:(NSString*)appendpath;
++(bool)checkifFileExists:(NSString *)filename appendPath:(NSString *) appendpath;
 +(NSString *)appendstringwithArray:(NSArray *) a;
 +(void)performTokenRefresh:(id)target forSelector:(NSString *)selector withObject:(id)object;
 @end

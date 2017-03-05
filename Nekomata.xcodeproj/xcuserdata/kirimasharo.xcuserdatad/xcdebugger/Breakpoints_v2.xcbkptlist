@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nekomata/MainWindow.m"
-            timestampString = "510427601.815104"
+            timestampString = "510439829.782759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "497"
-            endingLineNumber = "497"
+            startingLineNumber = "501"
+            endingLineNumber = "501"
             landmarkName = "-deletetitle"
             landmarkType = "7">
          </BreakpointContent>

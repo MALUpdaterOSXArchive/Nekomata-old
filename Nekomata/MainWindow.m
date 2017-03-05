@@ -80,7 +80,7 @@
     else{
          [sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:1]byExtendingSelection:false];
     }
-    NSNumber *shouldrefresh = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshonstart"];
+    NSNumber *shouldrefresh = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshlistonstart"];
     [self loadlist:shouldrefresh];
     
 }
@@ -327,8 +327,15 @@
 }
 #pragma mark Anime List
 -(void)loadlist:(NSNumber *)refresh{
-    id list = [Utility loadJSON:@"animelist.json" appendpath:@""];
-    if (list == nil || refresh.boolValue){
+    id list;
+    bool exists = [Utility checkifFileExists:@"animelist.json" appendPath:@""];
+    bool refreshlist = refresh.boolValue;
+    list = [Utility loadJSON:@"animelist.json" appendpath:@""];
+    if (exists && !refreshlist){
+        [self populateList:list];
+        return;
+    }
+    else if (!exists || refreshlist){
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
 
     [manager GET:[NSString stringWithFormat:@"https://anilist.co/api/user/%@/animelist/", [[NSUserDefaults standardUserDefaults] valueForKey:@"loggedinuserid"]] parameters:@{@"access_token":[Utility getToken]} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
@@ -340,9 +347,6 @@
             [Utility performTokenRefresh:self forSelector:@"loadlist:" withObject:refresh];
         }
     }];
-    }
-    else{
-        [self populateList:list];
     }
 }
 -(void)populateList:(id)object{

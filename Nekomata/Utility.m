@@ -123,6 +123,15 @@
     }
     return string;
 }
++(bool)checkifFileExists:(NSString *)filename appendPath:(NSString *) appendpath{
+    NSString * path = [Utility retrieveApplicationSupportDirectory:appendpath];
+    NSFileManager *filemanager = [NSFileManager defaultManager];
+    NSString * fullfilenamewithpath = [NSString stringWithFormat:@"%@/%@",path,filename];
+    if ([filemanager fileExistsAtPath:fullfilenamewithpath]){
+            return true;
+    }
+    return false;
+}
 +(void)performTokenRefresh:(id)target forSelector:(NSString *)selector withObject:(id)object{
     __block SEL aSelector = NSSelectorFromString(selector);
     AFOAuthCredential *cred =
