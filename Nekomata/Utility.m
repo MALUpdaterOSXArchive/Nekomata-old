@@ -136,7 +136,6 @@
         NSLog(@"Token refreshed");
         [AFOAuthCredential storeCredential:credential
                             withIdentifier:@"Nekomata"];
-        [NSThread sleepForTimeInterval:10];
         [target performSelector:aSelector withObject:object];
     }
                                                failure:^(NSError *error) {

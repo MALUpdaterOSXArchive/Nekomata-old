@@ -69,7 +69,18 @@
 @property (strong) IBOutlet NSProgressIndicator *minipopoverindicator;
 @property (strong) IBOutlet NSButton *minipopovereditbtn;
 @property (strong) IBOutlet NSPopover *minieditpopover;
+@property (strong) IBOutlet NSNumberFormatter *minieditpopovernumformat;
 
+// Add Popover
+@property (strong) IBOutlet NSView *popoveraddtitleexistsview;
+@property (strong) IBOutlet NSView *addtitleview;
+@property (strong) IBOutlet NSTextField *addepifield;
+@property (strong) IBOutlet NSNumberFormatter *addnumformat;
+@property (strong) IBOutlet NSTextField *addtotalepisodes;
+@property (strong) IBOutlet NSTextField *addscorefiled;
+@property (strong) IBOutlet NSPopUpButton *addstatusfield;
+@property (strong) IBOutlet NSButton *addfield;
+@property (strong) IBOutlet NSPopover *addpopover;
 
 
 //Public Methods
@@ -94,6 +105,9 @@
 // Modify Popover
 - (IBAction)performmodifytitle:(id)sender;
 - (IBAction)performupdatetitle:(id)sender;
+// Add Title
+- (IBAction)addtitle:(id)sender;
+- (IBAction)showaddpopover:(id)sender;
 
 
 @end

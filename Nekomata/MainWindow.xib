@@ -8,6 +8,14 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainWindow">
             <connections>
+                <outlet property="addepifield" destination="yS0-GV-xIs" id="vnD-5a-Qve"/>
+                <outlet property="addfield" destination="kYJ-S3-Kwx" id="sRk-Aw-jgr"/>
+                <outlet property="addnumformat" destination="Y1C-Pd-QfX" id="GWo-p9-52R"/>
+                <outlet property="addpopover" destination="XPV-h5-bEU" id="axW-OG-EM0"/>
+                <outlet property="addscorefiled" destination="BVM-Kt-eH2" id="c79-R6-vLN"/>
+                <outlet property="addstatusfield" destination="1Hd-J0-wmg" id="iEP-vu-6lB"/>
+                <outlet property="addtitleview" destination="7Or-jW-V5r" id="bvr-Y8-fZ2"/>
+                <outlet property="addtotalepisodes" destination="mN3-m6-y9e" id="lEG-sn-tla"/>
                 <outlet property="animeinfoview" destination="C59-wX-gdu" id="j5p-QE-k4Z"/>
                 <outlet property="animelistarraycontroller" destination="mWb-w6-hzi" id="aul-bg-rUM"/>
                 <outlet property="animelistfilter" destination="KKI-5U-zIm" id="rxX-Rl-AtR"/>
@@ -23,6 +31,7 @@
                 <outlet property="infoviewtitle" destination="oxO-0F-FMk" id="L7y-Gv-fbm"/>
                 <outlet property="mainview" destination="bkX-dG-MlV" id="hvu-zy-EK5"/>
                 <outlet property="minieditpopover" destination="TrX-YX-OCN" id="9xL-ci-Qrb"/>
+                <outlet property="minieditpopovernumformat" destination="OWj-IV-fdf" id="xkP-UO-t9T"/>
                 <outlet property="minipopovereditbtn" destination="hdA-sc-FAg" id="cfk-Xx-njs"/>
                 <outlet property="minipopoverepfield" destination="hJh-u6-mqp" id="svc-b3-4lo"/>
                 <outlet property="minipopoverindicator" destination="TRA-QY-vLq" id="jea-rw-Nch"/>
@@ -34,6 +43,7 @@
                 <outlet property="notloggedinview" destination="Bid-LM-YGW" id="X7P-bv-gBz"/>
                 <outlet property="onholdfilter" destination="Oy4-2S-514" id="Fcw-W3-0QG"/>
                 <outlet property="plantowatchfilter" destination="UgS-qr-B0W" id="fuR-Wo-YR2"/>
+                <outlet property="popoveraddtitleexistsview" destination="HbP-Ea-6oT" id="lW8-LV-QHh"/>
                 <outlet property="progressindicator" destination="nJp-pg-isf" id="mIT-I9-J37"/>
                 <outlet property="progressview" destination="K71-hX-Lqz" id="UxL-8a-2aR"/>
                 <outlet property="refreshlist" destination="6qy-e4-N2b" id="K7X-ly-jCN"/>
@@ -189,9 +199,11 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="sharetitle:" target="-2" id="y79-2p-3tA"/>
+                            </connections>
                         </button>
                         <connections>
-                            <action selector="sharetitle:" target="-2" id="ABN-xD-us2"/>
                             <binding destination="mWb-w6-hzi" name="enabled" keyPath="selection.@count" id="r3y-s7-bTE"/>
                         </connections>
                     </toolbarItem>
@@ -207,7 +219,7 @@
                             </buttonCell>
                         </button>
                         <connections>
-                            <action selector="PerformAddTitle:" target="-2" id="n9f-h0-dVB"/>
+                            <action selector="showaddpopover:" target="-2" id="rRf-wu-rZy"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="0A9A687E-0892-4E2D-9DA3-91B5DFAF1854" explicitItemIdentifier="AddTitleSeason" label="Add Title" paletteLabel="Add Title" toolTip="Add Title" image="NSAddTemplate" id="DVY-q1-nSf">
@@ -220,9 +232,12 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="sharetitle:" target="-2" id="HPO-U6-IFu"/>
+                            </connections>
                         </button>
                         <connections>
-                            <action selector="PerformAddTitle:" target="-2" id="0QO-yf-us5"/>
+                            <action selector="showaddpopover:" target="-2" id="CS3-hB-7dd"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="A1F35638-FA53-4287-A620-A3B4964133B5" explicitItemIdentifier="AddTitleSearch" label="Add Title" paletteLabel="Add Title" toolTip="Add Title" image="NSAddTemplate" id="2dK-au-ShY">
@@ -240,7 +255,7 @@
                             </connections>
                         </button>
                         <connections>
-                            <action selector="PerformAddTitle:" target="-2" id="0FR-eE-uVl"/>
+                            <action selector="addtitle:" target="-2" id="BNY-4X-Lne"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="B87F1C55-7DD2-41B7-A147-4F8E4368E4A2" explicitItemIdentifier="DeleteTitle" label="Delete Title" paletteLabel="Delete Title" toolTip="Delete Title" image="delete" id="WJo-Ig-ng6">
@@ -389,10 +404,10 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="sharetitle:" target="-2" id="7F0-ca-OPh"/>
+                            </connections>
                         </button>
-                        <connections>
-                            <action selector="sharetitle:" target="-2" id="TZ5-1L-2Ti"/>
-                        </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="4485F696-5704-4CEF-BE6E-6C62E871417C" explicitItemIdentifier="ShareInfo" label="Share" paletteLabel="Share" toolTip="Share" image="NSShareTemplate" id="wwq-CJ-IhW">
                         <size key="minSize" width="8" height="25"/>
@@ -404,10 +419,10 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="sharetitle:" target="-2" id="NVl-MF-a1j"/>
+                            </connections>
                         </button>
-                        <connections>
-                            <action selector="sharetitle:" target="-2" id="Xlr-FD-ffi"/>
-                        </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Mt7-WY-45F"/>
                 </allowedToolbarItems>
@@ -947,11 +962,11 @@
             <point key="canvasLocation" x="96" y="752"/>
         </customView>
         <customView id="b2q-72-5Fu" userLabel="addtitleview">
-            <rect key="frame" x="0.0" y="0.0" width="330" height="161"/>
+            <rect key="frame" x="0.0" y="0.0" width="330" height="153"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HbP-Ea-6oT">
-                    <rect key="frame" x="1" y="8" width="329" height="151"/>
+                    <rect key="frame" x="1" y="0.0" width="329" height="151"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f4D-pu-pCl">
@@ -966,7 +981,7 @@
                     </subviews>
                 </customView>
                 <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Or-jW-V5r">
-                    <rect key="frame" x="0.0" y="0.0" width="333" height="164"/>
+                    <rect key="frame" x="0.0" y="-9" width="333" height="164"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d4X-yl-WGH">
@@ -987,7 +1002,7 @@
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yS0-GV-xIs">
+                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yS0-GV-xIs" customClass="NSTextFieldNumber">
                             <rect key="frame" x="115" y="107" width="50" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="rWt-oM-Y0b">
@@ -1033,21 +1048,6 @@
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dZ2-2D-rqc">
-                            <rect key="frame" x="111" y="49" width="143" height="26"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <popUpButtonCell key="cell" type="push" title="0 - No Score" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="iiO-6i-Zdy" id="r5T-L0-jL0">
-                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="menu"/>
-                                <menu key="menu" title="OtherViews" id="3QZ-So-qJT">
-                                    <items>
-                                        <menuItem title="0 - No Score" state="on" id="iiO-6i-Zdy"/>
-                                        <menuItem title="Item 2" id="Xt1-7V-MCa"/>
-                                        <menuItem title="Item 3" id="3oC-6k-xI1"/>
-                                    </items>
-                                </menu>
-                            </popUpButtonCell>
-                        </popUpButton>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Hd-J0-wmg">
                             <rect key="frame" x="111" y="76" width="143" height="26"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1062,6 +1062,9 @@
                                     </items>
                                 </menu>
                             </popUpButtonCell>
+                            <connections>
+                                <outlet property="menu" destination="JMq-2e-mww" id="a7y-Gs-9Zm"/>
+                            </connections>
                         </popUpButton>
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kYJ-S3-Kwx">
                             <rect key="frame" x="238" y="13" width="81" height="32"/>
@@ -1070,15 +1073,30 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="PerformAddTitle:" target="-2" id="H0s-u4-4vb"/>
+                            </connections>
                         </button>
                         <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="3rj-f1-CE8">
                             <rect key="frame" x="220" y="20" width="16" height="16"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         </progressIndicator>
+                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BVM-Kt-eH2">
+                            <rect key="frame" x="113" y="53" width="52" height="22"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="JbN-2a-gCA">
+                                <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="53J-8f-ysv">
+                                    <real key="maximum" value="100"/>
+                                </numberFormatter>
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
                     </subviews>
                 </customView>
             </subviews>
-            <point key="canvasLocation" x="-365" y="771.5"/>
+            <point key="canvasLocation" x="-365" y="767.5"/>
         </customView>
         <customView identifier="seasonview" id="wr8-9U-tfn" userLabel="seasonview">
             <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
@@ -1094,7 +1112,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" ambiguous="YES" id="EUC-6r-NMV">
                         <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="seasontb" headerView="lcO-cB-Nug" id="oys-2G-zkA">
                                 <rect key="frame" x="0.0" y="0.0" width="562" height="378"/>
@@ -1304,7 +1322,7 @@
         </customView>
         <viewController id="I6H-BN-sao" userLabel="AddPopoverViewController">
             <connections>
-                <outlet property="view" destination="z2B-wC-5cy" id="wEJ-fg-f6Y"/>
+                <outlet property="view" destination="b2q-72-5Fu" id="yGG-wK-eNz"/>
             </connections>
         </viewController>
         <popover appearance="vibrantLight" behavior="t" id="TrX-YX-OCN" userLabel="Mini Edit Popover">
@@ -1314,7 +1332,7 @@
         </popover>
         <popover appearance="vibrantLight" behavior="t" id="XPV-h5-bEU">
             <connections>
-                <outlet property="contentViewController" destination="I6H-BN-sao" id="5Us-pn-OQU"/>
+                <outlet property="contentViewController" destination="I6H-BN-sao" id="VQo-uW-9WG"/>
             </connections>
         </popover>
         <viewController id="w9r-Zw-PrM" userLabel="Mini EditPopover View Controller">
