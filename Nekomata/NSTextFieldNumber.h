@@ -8,6 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface NSTextFieldNumber : NSTextField
+@interface NSTextFieldNumber : NSTextField <NSTextFieldDelegate>
 
 @end

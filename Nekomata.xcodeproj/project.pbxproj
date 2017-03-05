@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2D2EC23D1E6B9EF3003132AA /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2D2EC23C1E6B9EF3003132AA /* dsa_pub.pem */; };
+		2D2EC2401E6C7D9F003132AA /* NSNumberFormatterNumberOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2EC23F1E6C7D9F003132AA /* NSNumberFormatterNumberOnly.m */; };
 		2D57A2D61E68ADFE000B101F /* NSString_stripHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D57A2D51E68ADFE000B101F /* NSString_stripHtml.m */; };
 		2D57A2D91E68BA35000B101F /* ListProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D57A2D81E68BA35000B101F /* ListProcess.m */; };
 		2D6481991E66950900984550 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6481981E66950900984550 /* AppDelegate.m */; };
@@ -72,6 +73,8 @@
 
 /* Begin PBXFileReference section */
 		2D2EC23C1E6B9EF3003132AA /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		2D2EC23E1E6C7D9F003132AA /* NSNumberFormatterNumberOnly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberFormatterNumberOnly.h; sourceTree = "<group>"; };
+		2D2EC23F1E6C7D9F003132AA /* NSNumberFormatterNumberOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNumberFormatterNumberOnly.m; sourceTree = "<group>"; };
 		2D57A2D41E68ADFE000B101F /* NSString_stripHtml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSString_stripHtml.h; sourceTree = "<group>"; };
 		2D57A2D51E68ADFE000B101F /* NSString_stripHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_stripHtml.m; sourceTree = "<group>"; };
 		2D57A2D71E68BA35000B101F /* ListProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListProcess.h; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 				2D6481B61E66957400984550 /* MainWindow.h */,
 				2D2EC23C1E6B9EF3003132AA /* dsa_pub.pem */,
 				2D6481B71E66957400984550 /* MainWindow.m */,
+				2D2EC23E1E6C7D9F003132AA /* NSNumberFormatterNumberOnly.h */,
+				2D2EC23F1E6C7D9F003132AA /* NSNumberFormatterNumberOnly.m */,
 				2DF502331E6753AA008EC236 /* Resources */,
 				2D64819A1E66950900984550 /* Supporting Files */,
 			);
@@ -382,6 +387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D2EC2401E6C7D9F003132AA /* NSNumberFormatterNumberOnly.m in Sources */,
 				2DF5023C1E675998008EC236 /* AniList.m in Sources */,
 				2DDB15BE1E6B4B3100ECCB3B /* NSTextFieldNumber.m in Sources */,
 				2DF502511E6765B7008EC236 /* AFOAuthCredential.m in Sources */,

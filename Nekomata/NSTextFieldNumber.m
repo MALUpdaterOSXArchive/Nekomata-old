@@ -15,7 +15,4 @@
     
     // Drawing code here.
 }
--(void) textDidEndEditing:(NSNotification *)notification{
-    [self setIntValue:[self intValue]];
-}
 @end

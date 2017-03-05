@@ -1006,11 +1006,14 @@
                             <rect key="frame" x="115" y="107" width="50" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="rWt-oM-Y0b">
-                                <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="Y1C-Pd-QfX"/>
+                                <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="Y1C-Pd-QfX" customClass="NSNumberFormatterNumberOnly"/>
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
+                            <connections>
+                                <outlet property="delegate" destination="lXH-h1-ka3" id="hfj-Lg-cOy"/>
+                            </connections>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sG1-3f-FBr">
                             <rect key="frame" x="171" y="110" width="23" height="17"/>
@@ -1085,13 +1088,16 @@
                             <rect key="frame" x="113" y="53" width="52" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="JbN-2a-gCA">
-                                <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="53J-8f-ysv">
+                                <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="53J-8f-ysv" customClass="NSNumberFormatterNumberOnly">
                                     <real key="maximum" value="100"/>
                                 </numberFormatter>
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
+                            <connections>
+                                <outlet property="delegate" destination="lXH-h1-ka3" id="Qz7-sS-Tp2"/>
+                            </connections>
                         </textField>
                     </subviews>
                 </customView>
@@ -1220,7 +1226,7 @@
                     <rect key="frame" x="105" y="101" width="50" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="IB2-i1-j5m">
-                        <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="OWj-IV-fdf"/>
+                        <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="OWj-IV-fdf" customClass="NSNumberFormatterNumberOnly"/>
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1308,7 +1314,7 @@
                     <rect key="frame" x="103" y="47" width="52" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="E1e-9e-rcN">
-                        <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="nW3-Kh-0Kk">
+                        <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="nW3-Kh-0Kk" customClass="NSNumberFormatterNumberOnly">
                             <real key="minimum" value="0.0"/>
                             <real key="maximum" value="100"/>
                         </numberFormatter>
@@ -1316,6 +1322,9 @@
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="delegate" destination="lXH-h1-ka3" id="k88-JF-t7b"/>
+                    </connections>
                 </textField>
             </subviews>
             <point key="canvasLocation" x="-49.5" y="655"/>
@@ -1335,6 +1344,11 @@
                 <outlet property="contentViewController" destination="I6H-BN-sao" id="VQo-uW-9WG"/>
             </connections>
         </popover>
+        <customObject id="lXH-h1-ka3" customClass="NSTextFieldNumber">
+            <connections>
+                <outlet property="delegate" destination="hJh-u6-mqp" id="JaN-JM-rSA"/>
+            </connections>
+        </customObject>
         <viewController id="w9r-Zw-PrM" userLabel="Mini EditPopover View Controller">
             <connections>
                 <outlet property="view" destination="z2B-wC-5cy" id="j6W-hU-AXf"/>
