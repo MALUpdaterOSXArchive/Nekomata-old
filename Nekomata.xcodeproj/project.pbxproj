@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D2EC23D1E6B9EF3003132AA /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2D2EC23C1E6B9EF3003132AA /* dsa_pub.pem */; };
 		2D57A2D61E68ADFE000B101F /* NSString_stripHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D57A2D51E68ADFE000B101F /* NSString_stripHtml.m */; };
 		2D57A2D91E68BA35000B101F /* ListProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D57A2D81E68BA35000B101F /* ListProcess.m */; };
 		2D6481991E66950900984550 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6481981E66950900984550 /* AppDelegate.m */; };
@@ -70,6 +71,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2D2EC23C1E6B9EF3003132AA /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		2D57A2D41E68ADFE000B101F /* NSString_stripHtml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSString_stripHtml.h; sourceTree = "<group>"; };
 		2D57A2D51E68ADFE000B101F /* NSString_stripHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_stripHtml.m; sourceTree = "<group>"; };
 		2D57A2D71E68BA35000B101F /* ListProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListProcess.h; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				2DF5023A1E675998008EC236 /* AniList.h */,
 				2DF5023B1E675998008EC236 /* AniList.m */,
 				2D6481B61E66957400984550 /* MainWindow.h */,
+				2D2EC23C1E6B9EF3003132AA /* dsa_pub.pem */,
 				2D6481B71E66957400984550 /* MainWindow.m */,
 				2DF502331E6753AA008EC236 /* Resources */,
 				2D64819A1E66950900984550 /* Supporting Files */,
@@ -355,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D64819E1E66950900984550 /* Assets.xcassets in Resources */,
+				2D2EC23D1E6B9EF3003132AA /* dsa_pub.pem in Resources */,
 				2DF5022B1E675087008EC236 /* SoftwareUpdateView.xib in Resources */,
 				2D6481A11E66950900984550 /* MainMenu.xib in Resources */,
 				2DF502301E6751CC008EC236 /* GeneralPref.xib in Resources */,

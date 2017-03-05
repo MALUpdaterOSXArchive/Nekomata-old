@@ -14,7 +14,6 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate>{
     MainWindow * mainwindowcontroller;
     NSWindowController *_preferencesWindowController;
-    MSWeakTimer * oauthrefreshtimer;
 }
 // Preference Window
 @property (nonatomic, readonly) NSWindowController *preferencesWindowController;
