@@ -293,7 +293,9 @@
             [self populatesearchtb:responseObject];
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             NSLog(@"Error: %@", error);
-            [Utility performTokenRefresh:self forSelector:@"performsearch:" withObject:sender];
+            if([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: unauthorized (401)"]){
+                [Utility performTokenRefresh:self forSelector:@"performsearch:" withObject:sender];
+            }
         }];
     }
     else{
@@ -313,10 +315,13 @@
         }
     }
 }
--(void)populatesearchtb:(NSArray*)json{
+-(void)populatesearchtb:(id)json{
     NSMutableArray * a = [searcharraycontroller content];
     [a removeAllObjects];
-    [searcharraycontroller addObjects:json];
+    if ([json isKindOfClass:[NSArray class]]){
+       // Valid Search Results, populate
+        [searcharraycontroller addObjects:json];
+    }
     [searchtb reloadData];
     [searchtb deselectAll:self];
 }
@@ -325,11 +330,15 @@
     id list = [Utility loadJSON:@"animelist.json" appendpath:@""];
     if (list == nil || refresh.boolValue){
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+
     [manager GET:[NSString stringWithFormat:@"https://anilist.co/api/user/%@/animelist/", [[NSUserDefaults standardUserDefaults] valueForKey:@"loggedinuserid"]] parameters:@{@"access_token":[Utility getToken]} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         [self populateList:[Utility saveJSON:[ListProcess processAnimeList:responseObject] withFilename:@"animelist.json" appendpath:@"" replace:TRUE]];
     
     } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"%@", error.userInfo);
+        if([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: unauthorized (401)"]){
             [Utility performTokenRefresh:self forSelector:@"loadlist:" withObject:refresh];
+        }
     }];
     }
     else{
@@ -485,7 +494,9 @@
     [manager DELETE:[NSString stringWithFormat:@"https://anilist.co/api/animelist/%i", selid.intValue] parameters:nil success:^(NSURLSessionTask *task, id responseObject) {
         [self loadlist:@(true)];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
-        [Utility performTokenRefresh:self forSelector:@"deletetitle" withObject:nil];
+        if([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: unauthorized (401)"]){
+            [Utility performTokenRefresh:self forSelector:@"deletetitle" withObject:nil];
+        }
     }];
 }
 #pragma mark Edit Popover
@@ -561,7 +572,9 @@
          [_minipopovereditbtn setEnabled:true];
         [_minieditpopover setBehavior:NSPopoverBehaviorTransient];
         [_minipopoverindicator stopAnimation:nil];
-        [Utility performTokenRefresh:self forSelector:@"performupdate" withObject:nil];
+        if([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: unauthorized (401)"]){
+            [Utility performTokenRefresh:self forSelector:@"performupdate" withObject:nil];
+        }
         [_minipopoverstatustext setStringValue:@"Error"];
     }];
 }
@@ -643,7 +656,9 @@
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         [_addfield setEnabled:true];
         [_addpopover setBehavior:NSPopoverBehaviorTransient];
+        if([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: unauthorized (401)"]){
         [Utility performTokenRefresh:self forSelector:@"performupdate" withObject:nil];
+        }
     }];
 }
 
