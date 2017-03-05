@@ -257,6 +257,9 @@
                                 <binding destination="mWb-w6-hzi" name="enabled" keyPath="selectedObjects.@count" id="dpj-6H-I65"/>
                             </connections>
                         </button>
+                        <connections>
+                            <action selector="deletetitle:" target="-2" id="U03-XB-hD4"/>
+                        </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="592B486B-1906-4FCE-A1B7-A21E0C346794" explicitItemIdentifier="filter" label="Filter" paletteLabel="Filter" id="nBW-W8-5VV">
                         <nil key="toolTip"/>
@@ -508,7 +511,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="va9-SX-7eZ">
                         <rect key="frame" x="0.0" y="0.0" width="531" height="181"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textView ambiguous="YES" editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="kPY-d9-4j3">
                                 <rect key="frame" x="0.0" y="0.0" width="531" height="181"/>
@@ -534,7 +537,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="USE-uE-bdz">
-                        <rect key="frame" x="515" y="0.0" width="16" height="181"/>
+                        <rect key="frame" x="-16" y="0.0" width="16" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -543,7 +546,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="2LL-e2-epl">
                         <rect key="frame" x="0.0" y="0.0" width="531" height="84"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textView ambiguous="YES" editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="YId-Bz-Wxt">
                                 <rect key="frame" x="0.0" y="0.0" width="531" height="84"/>
@@ -569,7 +572,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="0O4-rC-cNM">
-                        <rect key="frame" x="515" y="0.0" width="16" height="84"/>
+                        <rect key="frame" x="-16" y="0.0" width="16" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -585,7 +588,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" ambiguous="YES" id="FS0-0V-x3s">
                         <rect key="frame" x="0.0" y="0.0" width="564" height="275"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" headerView="WvY-eG-gZD" id="EK1-W7-f3l">
                                 <rect key="frame" x="0.0" y="0.0" width="565" height="252"/>
@@ -722,7 +725,7 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="tCL-Au-5bw">
-                        <rect key="frame" x="0.0" y="259" width="564" height="16"/>
+                        <rect key="frame" x="0.0" y="7" width="0.0" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="gmM-sJ-tLE">
@@ -851,7 +854,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" ambiguous="YES" id="EAK-w1-dkl">
                         <rect key="frame" x="0.0" y="0.0" width="563" height="398"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="searchtb" headerView="leu-2E-e7l" id="0oH-PF-Un2">
                                 <rect key="frame" x="0.0" y="0.0" width="626" height="375"/>
@@ -928,7 +931,7 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="Eyb-fP-Q9M">
-                        <rect key="frame" x="0.0" y="382" width="563" height="16"/>
+                        <rect key="frame" x="0.0" y="7" width="0.0" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="8Mr-bQ-2eQ">

@@ -83,6 +83,7 @@
 //Anime List View
 - (IBAction)refreshlist:(id)sender;
 - (IBAction)animelistdoubleclick:(id)sender;
+- (IBAction)deletetitle:(id)sender;
 -(void)clearlist;
 - (IBAction)filterperform:(id)sender;
 //Search View

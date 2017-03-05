@@ -423,6 +423,21 @@
         }
     }
 }
+
+- (IBAction)deletetitle:(id)sender {
+    NSAlert * alert = [[NSAlert alloc] init] ;
+    NSDictionary *d = [[_animelistarraycontroller selectedObjects] objectAtIndex:0];
+    [alert addButtonWithTitle:@"Yes"];
+    [alert addButtonWithTitle:@"No"];
+    [alert setMessageText:[NSString stringWithFormat:@"Are you sure you want to delete %@ from your list?", d[@"title_romaji"]]];
+    [alert setInformativeText:@"Once you delete this title, this cannot be undone."];
+    [alert setAlertStyle:NSAlertStyleWarning];
+    [alert beginSheetModalForWindow:[self window] completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode== NSAlertFirstButtonReturn) {
+            [self deletetitle];
+        }
+    }];
+}
 -(void)clearlist{
     //Clears List
     NSMutableArray * a = [_animelistarraycontroller content];
@@ -447,6 +462,17 @@
         }
     }
     return final;
+}
+-(void)deletetitle{
+    NSDictionary *d = [[_animelistarraycontroller selectedObjects] objectAtIndex:0];
+    NSNumber * selid = d[@"id"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", [Utility getToken]] forHTTPHeaderField:@"Authorization"];
+    [manager PUT:[NSString stringWithFormat:@"https://anilist.co/api/animelist/%i", selid.intValue] parameters:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [self loadlist:@(true)];
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        [Utility performTokenRefresh:self forSelector:@"deletetitle" withObject:nil];
+    }];
 }
 #pragma mark Edit Popover
 -(void)showEditPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge{
