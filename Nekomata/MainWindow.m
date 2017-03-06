@@ -725,7 +725,7 @@
     NSString * type = d[@"type"];
     NSNumber * score = d[@"average_score"];
     NSNumber * popularity = d[@"popularity"];
-    NSImage * posterimage = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url_lge"]]]];
+    NSImage * posterimage = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",d[@"id"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url_lge"]]]];
     [_infoviewposterimage setImage:posterimage];
     [details appendString:[NSString stringWithFormat:@"Type: %@\n", type]];
     [details appendString:[NSString stringWithFormat:@"Genre: %@\n", genres]];

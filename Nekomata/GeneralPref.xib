@@ -86,6 +86,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="clearimages:" target="-2" id="ylm-2f-u6x"/>
+                    </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rfp-VK-054">
                     <rect key="frame" x="235" y="98" width="175" height="18"/>

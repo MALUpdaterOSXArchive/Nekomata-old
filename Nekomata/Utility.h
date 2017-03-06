@@ -23,4 +23,6 @@
 +(bool)checkifFileExists:(NSString *)filename appendPath:(NSString *) appendpath;
 +(NSString *)appendstringwithArray:(NSArray *) a;
 +(void)performTokenRefresh:(id)target forSelector:(NSString *)selector withObject:(id)object;
++(NSImage *)loadImage:(NSString *)filename withAppendPath:(NSString *)append fromURL:(NSURL *)url;
++(NSImage *)retrieveimageandsave:(NSString *) filename withAppendPath:(NSString *)append fromURL:(NSURL *)url;
 @end

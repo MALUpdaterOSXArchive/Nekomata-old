@@ -151,4 +151,23 @@
                                                    NSLog(@"Token cannot be refreshed: %@", error);
                                                }];
 }
++(NSImage *)loadImage:(NSString *)filename withAppendPath:(NSString *)append fromURL:(NSURL *)url{
+    NSString * path = [Utility retrieveApplicationSupportDirectory:append];
+    NSFileManager *filemanager = [NSFileManager defaultManager];
+    if ([filemanager fileExistsAtPath:[NSString stringWithFormat:@"%@/%@",path, filename]]){
+        return [[NSImage alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@/%@",path, filename]];
+    }
+    return [Utility retrieveimageandsave:filename withAppendPath:append fromURL:url];
+}
++(NSImage *)retrieveimageandsave:(NSString *) filename withAppendPath:(NSString *)append fromURL:(NSURL *)url{
+    NSImage * img = [[NSImage alloc] initWithContentsOfURL:url];
+    CGImageRef cgref = [img CGImageForProposedRect:NULL context:nil hints:nil];
+    NSBitmapImageRep * bitmaprep = [[NSBitmapImageRep alloc] initWithCGImage:cgref];
+    [bitmaprep setSize:[img size]];
+    NSDictionary *imageProps = @{NSImageCompressionFactor:[NSNumber numberWithFloat:1.0]};
+    NSData * imgdata = [bitmaprep representationUsingType:NSJPEGFileType properties:imageProps];
+    NSString * path =[Utility retrieveApplicationSupportDirectory:append];
+    [imgdata writeToFile: [NSString stringWithFormat:@"%@/%@",path, filename] atomically:TRUE];
+    return [Utility loadImage:filename withAppendPath:append fromURL:url];
+}
 @end

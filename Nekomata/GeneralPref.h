@@ -15,5 +15,6 @@
 - (IBAction)changeappearence:(id)sender;
 -(void)setMainWindowController:(MainWindow*)mw;
 - (IBAction)performtoggletimer:(id)sender;
+- (IBAction)clearimages:(id)sender;
 
 @end
