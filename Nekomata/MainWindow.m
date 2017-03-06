@@ -10,6 +10,10 @@
 #import "AppDelegate.h"
 #import "NSString_stripHtml.h"
 #import "ListProcess.h"
+#import "AFOAuth2Manager.h"
+#import "Utility.h"
+#import "NSTextFieldNumber.h"
+#import "MSWeakTimer.h"
 
 @interface MainWindow ()
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
@@ -25,6 +29,8 @@
 }
 - (void)awakeFromNib
 {
+    // Register queue
+    _privateQueue = dispatch_queue_create("moe.ateliershiori.nekomata", DISPATCH_QUEUE_CONCURRENT);
     // Insert code here to initialize your application
     // Fix template images
     // There is a bug where template images are not made even if they are set in XCAssets
@@ -82,6 +88,11 @@
     }
     NSNumber *shouldrefresh = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshlistonstart"];
     [self loadlist:shouldrefresh];
+    NSNumber * autorefreshlist = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshautomatically"];
+    if (autorefreshlist.boolValue){
+        [self startTimer];
+    }
+    
     
 }
 
@@ -112,6 +123,21 @@
     NSButton * btn = (NSButton *)sender;
     // Show Share Box
     [sharePicker showRelativeToRect:[btn bounds] ofView:btn preferredEdge:NSMinYEdge];
+}
+-(void)startTimer{
+    _refreshtimer =  [MSWeakTimer scheduledTimerWithTimeInterval:900
+                                                          target:self
+                                                        selector:@selector(fireTimer)
+                                                        userInfo:nil
+                                                         repeats:YES
+                                                   dispatchQueue:_privateQueue];
+}
+-(void)stopTimer{
+    [_refreshtimer invalidate];
+}
+-(void)fireTimer{
+    if ([Utility getToken] != nil)
+    [self loadlist:@(true)];
 }
 
 - (void)windowWillClose:(NSNotification *)notification{

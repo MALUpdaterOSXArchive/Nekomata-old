@@ -41,4 +41,14 @@
 -(void)setMainWindowController:(MainWindow*)mw{
     mainwindowcontroller = mw;
 }
+
+- (IBAction)performtoggletimer:(id)sender {
+    NSNumber * autorefreshlist = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshautomatically"];
+    if (autorefreshlist.boolValue){
+        [mainwindowcontroller startTimer];
+    }
+    else{
+        [mainwindowcontroller stopTimer];
+    }
+}
 @end

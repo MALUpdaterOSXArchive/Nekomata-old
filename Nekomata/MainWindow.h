@@ -9,12 +9,10 @@
 #import <Cocoa/Cocoa.h>
 #import <PXSourceList/PXSourceList.h>
 #import <AFNetworking/AFNetworking.h>
-#import "AFOAuth2Manager.h"
-#import "Utility.h"
-#import "NSTextFieldNumber.h"
-
 
 @class AppDelegate;
+@class NSTextFieldNumber;
+@class MSWeakTimer;
 
 @interface MainWindow : NSWindowController < PXSourceListDataSource, PXSourceListDelegate>{
     IBOutlet NSWindow *w;
@@ -30,6 +28,7 @@
     bool selectedaircompleted;
     NSDictionary * selecteditem;
     NSDictionary * selectedanimeinfo;
+
 }
 //Anime List View
 @property (strong) IBOutlet NSArrayController *animelistarraycontroller;
@@ -82,6 +81,8 @@
 @property (strong) IBOutlet NSButton *addfield;
 @property (strong) IBOutlet NSPopover *addpopover;
 
+@property (strong, nonatomic) dispatch_queue_t privateQueue;
+@property (strong, nonatomic) MSWeakTimer * refreshtimer;
 
 //Public Methods
 -(void)setDelegate:(AppDelegate*) adelegate;
@@ -90,6 +91,9 @@
 - (IBAction)sharetitle:(id)sender;
 -(void)loadmainview;
 -(void)setAppearence;
+-(void)startTimer;
+-(void)stopTimer;
+-(void)fireTimer;
 
 //Anime List View
 - (IBAction)refreshlist:(id)sender;
@@ -106,7 +110,6 @@
 - (IBAction)performmodifytitle:(id)sender;
 - (IBAction)performupdatetitle:(id)sender;
 // Add Title
-- (IBAction)addtitle:(id)sender;
 - (IBAction)showaddpopover:(id)sender;
 
 

@@ -14,5 +14,6 @@
 }
 - (IBAction)changeappearence:(id)sender;
 -(void)setMainWindowController:(MainWindow*)mw;
+- (IBAction)performtoggletimer:(id)sender;
 
 @end

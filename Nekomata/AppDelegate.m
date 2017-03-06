@@ -26,6 +26,7 @@
     defaultValues[@"listdoubleclickaction"] = @"Modify Title";
     defaultValues[@"refreshlistonstart"] = @(0);
     defaultValues[@"appearence"] = @"Light";
+    defaultValues[@"refreshautomatically"] = @(1);
     
     //Register Dictionary
     [[NSUserDefaults standardUserDefaults]
