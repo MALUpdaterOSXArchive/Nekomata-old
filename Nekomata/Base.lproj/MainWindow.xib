@@ -551,7 +551,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="USE-uE-bdz">
-                        <rect key="frame" x="-16" y="0.0" width="16" height="0.0"/>
+                        <rect key="frame" x="515" y="0.0" width="16" height="181"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -586,7 +586,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="0O4-rC-cNM">
-                        <rect key="frame" x="-16" y="0.0" width="16" height="0.0"/>
+                        <rect key="frame" x="515" y="0.0" width="16" height="84"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -739,7 +739,7 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="tCL-Au-5bw">
-                        <rect key="frame" x="0.0" y="7" width="0.0" height="16"/>
+                        <rect key="frame" x="0.0" y="259" width="564" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="gmM-sJ-tLE">
@@ -945,7 +945,7 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="Eyb-fP-Q9M">
-                        <rect key="frame" x="0.0" y="7" width="0.0" height="16"/>
+                        <rect key="frame" x="0.0" y="382" width="563" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="8Mr-bQ-2eQ">

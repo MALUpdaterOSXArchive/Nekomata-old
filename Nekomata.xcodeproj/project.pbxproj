@@ -17,25 +17,24 @@
 		2D6481A11E66950900984550 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D64819F1E66950900984550 /* MainMenu.xib */; };
 		2D6481AC1E66950A00984550 /* NekomataUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6481AB1E66950A00984550 /* NekomataUITests.m */; };
 		2D6481B91E66957400984550 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6481B71E66957400984550 /* MainWindow.m */; };
-		2D6481BA1E66957400984550 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D6481B81E66957400984550 /* MainWindow.xib */; };
 		2D6481C01E669E7900984550 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6481BE1E6697DB00984550 /* PXSourceList.framework */; };
 		2D6481C11E669E7900984550 /* PXSourceList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6481BE1E6697DB00984550 /* PXSourceList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2D6481C21E669E7900984550 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6481BC1E6695C800984550 /* Sparkle.framework */; };
 		2D6481C31E669E7900984550 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6481BC1E6695C800984550 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2D9BD69E1E7336130082B36E /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D9BD6A01E7336130082B36E /* LoginView.xib */; };
+		2D9BD6A11E73361A0082B36E /* SoftwareUpdateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D9BD6A31E73361A0082B36E /* SoftwareUpdateView.xib */; };
+		2D9BD6A41E7336260082B36E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D9BD6A61E7336260082B36E /* MainWindow.xib */; };
+		2D9BD6A71E73362C0082B36E /* GeneralPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D9BD6A91E73362C0082B36E /* GeneralPref.xib */; };
 		2DA2E12C1E67B76D000B0DA4 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA2E12B1E67B76D000B0DA4 /* MSWeakTimer.m */; };
 		2DAE73111E6CADBC00BEC30F /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAE73101E6CADBC00BEC30F /* PFMoveApplication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2DBBC3901E68F3730085FB80 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2DBBC38F1E68F3730085FB80 /* Credits.rtf */; };
 		2DDB15BE1E6B4B3100ECCB3B /* NSTextFieldNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDB15BD1E6B4B3100ECCB3B /* NSTextFieldNumber.m */; };
 		2DF5021C1E674D1E008EC236 /* SoftwareUpdatesPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5021B1E674D1E008EC236 /* SoftwareUpdatesPref.m */; };
 		2DF5021F1E674D42008EC236 /* LoginPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5021E1E674D42008EC236 /* LoginPref.m */; };
-		2DF502211E674D4B008EC236 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DF502201E674D4B008EC236 /* LoginView.xib */; };
 		2DF502271E674DBF008EC236 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF502261E674DBF008EC236 /* Utility.m */; };
 		2DF502281E675040008EC236 /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF502171E674CCD008EC236 /* MASPreferences.framework */; };
 		2DF502291E675040008EC236 /* MASPreferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF502171E674CCD008EC236 /* MASPreferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2DF5022B1E675087008EC236 /* SoftwareUpdateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DF5022A1E675087008EC236 /* SoftwareUpdateView.xib */; };
 		2DF5022F1E6751CC008EC236 /* GeneralPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5022D1E6751CC008EC236 /* GeneralPref.m */; };
-		2DF502301E6751CC008EC236 /* GeneralPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DF5022E1E6751CC008EC236 /* GeneralPref.xib */; };
-		2DF5023C1E675998008EC236 /* AniList.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5023B1E675998008EC236 /* AniList.m */; };
 		2DF502451E675BC5008EC236 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF502441E675BC5008EC236 /* ClientConstants.m */; };
 		2DF502471E676523008EC236 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF502461E676523008EC236 /* AFNetworking.framework */; };
 		2DF5024F1E6765B7008EC236 /* AFHTTPRequestSerializer+OAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5024A1E6765B7008EC236 /* AFHTTPRequestSerializer+OAuth2.m */; };
@@ -92,9 +91,12 @@
 		2D6481AD1E66950A00984550 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D6481B61E66957400984550 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
 		2D6481B71E66957400984550 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
-		2D6481B81E66957400984550 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		2D6481BC1E6695C800984550 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		2D6481BE1E6697DB00984550 /* PXSourceList.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PXSourceList.framework; sourceTree = "<group>"; };
+		2D9BD69F1E7336130082B36E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LoginView.xib; sourceTree = "<group>"; };
+		2D9BD6A21E73361A0082B36E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SoftwareUpdateView.xib; sourceTree = "<group>"; };
+		2D9BD6A51E7336260082B36E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		2D9BD6A81E73362C0082B36E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GeneralPref.xib; sourceTree = "<group>"; };
 		2DA2E12A1E67B76D000B0DA4 /* MSWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSWeakTimer.h; sourceTree = "<group>"; };
 		2DA2E12B1E67B76D000B0DA4 /* MSWeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSWeakTimer.m; sourceTree = "<group>"; };
 		2DAE730F1E6CADBC00BEC30F /* PFMoveApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMoveApplication.h; sourceTree = "<group>"; };
@@ -108,15 +110,10 @@
 		2DF5021B1E674D1E008EC236 /* SoftwareUpdatesPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareUpdatesPref.m; sourceTree = "<group>"; };
 		2DF5021D1E674D42008EC236 /* LoginPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginPref.h; sourceTree = "<group>"; };
 		2DF5021E1E674D42008EC236 /* LoginPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginPref.m; sourceTree = "<group>"; };
-		2DF502201E674D4B008EC236 /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		2DF502251E674DBF008EC236 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		2DF502261E674DBF008EC236 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
-		2DF5022A1E675087008EC236 /* SoftwareUpdateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoftwareUpdateView.xib; sourceTree = "<group>"; };
 		2DF5022C1E6751CB008EC236 /* GeneralPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralPref.h; sourceTree = "<group>"; };
 		2DF5022D1E6751CC008EC236 /* GeneralPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralPref.m; sourceTree = "<group>"; };
-		2DF5022E1E6751CC008EC236 /* GeneralPref.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPref.xib; sourceTree = "<group>"; };
-		2DF5023A1E675998008EC236 /* AniList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AniList.h; sourceTree = "<group>"; };
-		2DF5023B1E675998008EC236 /* AniList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AniList.m; sourceTree = "<group>"; };
 		2DF502431E675BC5008EC236 /* ClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientConstants.h; sourceTree = "<group>"; };
 		2DF502441E675BC5008EC236 /* ClientConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientConstants.m; sourceTree = "<group>"; };
 		2DF502461E676523008EC236 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = "<group>"; };
@@ -177,8 +174,6 @@
 				2D6481BB1E6695B200984550 /* Frameworks */,
 				2D6481971E66950900984550 /* AppDelegate.h */,
 				2D6481981E66950900984550 /* AppDelegate.m */,
-				2DF5023A1E675998008EC236 /* AniList.h */,
-				2DF5023B1E675998008EC236 /* AniList.m */,
 				2D6481B61E66957400984550 /* MainWindow.h */,
 				2D6481B71E66957400984550 /* MainWindow.m */,
 				2D2EC23C1E6B9EF3003132AA /* dsa_pub.pem */,
@@ -258,10 +253,10 @@
 			isa = PBXGroup;
 			children = (
 				2DBBC38F1E68F3730085FB80 /* Credits.rtf */,
-				2DF502201E674D4B008EC236 /* LoginView.xib */,
-				2DF5022A1E675087008EC236 /* SoftwareUpdateView.xib */,
-				2D6481B81E66957400984550 /* MainWindow.xib */,
-				2DF5022E1E6751CC008EC236 /* GeneralPref.xib */,
+				2D9BD6A01E7336130082B36E /* LoginView.xib */,
+				2D9BD6A31E73361A0082B36E /* SoftwareUpdateView.xib */,
+				2D9BD6A61E7336260082B36E /* MainWindow.xib */,
+				2D9BD6A91E73362C0082B36E /* GeneralPref.xib */,
 				2D64819D1E66950900984550 /* Assets.xcassets */,
 				2D64819F1E66950900984550 /* MainMenu.xib */,
 				2D6481A21E66950900984550 /* Info.plist */,
@@ -369,12 +364,12 @@
 			files = (
 				2D64819E1E66950900984550 /* Assets.xcassets in Resources */,
 				2D2EC23D1E6B9EF3003132AA /* dsa_pub.pem in Resources */,
-				2DF5022B1E675087008EC236 /* SoftwareUpdateView.xib in Resources */,
+				2D9BD6A11E73361A0082B36E /* SoftwareUpdateView.xib in Resources */,
 				2D6481A11E66950900984550 /* MainMenu.xib in Resources */,
-				2DF502301E6751CC008EC236 /* GeneralPref.xib in Resources */,
-				2DF502211E674D4B008EC236 /* LoginView.xib in Resources */,
+				2D9BD6A71E73362C0082B36E /* GeneralPref.xib in Resources */,
+				2D9BD69E1E7336130082B36E /* LoginView.xib in Resources */,
 				2DBBC3901E68F3730085FB80 /* Credits.rtf in Resources */,
-				2D6481BA1E66957400984550 /* MainWindow.xib in Resources */,
+				2D9BD6A41E7336260082B36E /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,7 +388,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D2EC2401E6C7D9F003132AA /* NSNumberFormatterNumberOnly.m in Sources */,
-				2DF5023C1E675998008EC236 /* AniList.m in Sources */,
 				2DDB15BE1E6B4B3100ECCB3B /* NSTextFieldNumber.m in Sources */,
 				2DF502511E6765B7008EC236 /* AFOAuthCredential.m in Sources */,
 				2DF502501E6765B7008EC236 /* AFOAuth2Manager.m in Sources */,
@@ -438,6 +432,38 @@
 				2D6481A01E66950900984550 /* Base */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		2D9BD6A01E7336130082B36E /* LoginView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D9BD69F1E7336130082B36E /* Base */,
+			);
+			name = LoginView.xib;
+			sourceTree = "<group>";
+		};
+		2D9BD6A31E73361A0082B36E /* SoftwareUpdateView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D9BD6A21E73361A0082B36E /* Base */,
+			);
+			name = SoftwareUpdateView.xib;
+			sourceTree = "<group>";
+		};
+		2D9BD6A61E7336260082B36E /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D9BD6A51E7336260082B36E /* Base */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		2D9BD6A91E73362C0082B36E /* GeneralPref.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D9BD6A81E73362C0082B36E /* Base */,
+			);
+			name = GeneralPref.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
