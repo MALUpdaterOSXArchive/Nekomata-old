@@ -592,7 +592,7 @@
     [_minipopoverindicator startAnimation:nil];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", [Utility getToken]] forHTTPHeaderField:@"Authorization"];
-    [manager PUT:@"https://anilist.co/api/animelist/" parameters:@{@"id":@(selectededitid), @"list_status":_minipopoverstatus.title, @"score":@(0), @"score_raw":@(_minipopoverscore.intValue), @"episodes_watched":@(_minipopoverepfield.intValue),  @"rewatched":selecteditem[@"rewatched"], @"notes":selecteditem[@"notes"], @"advanced_rating_scores":selecteditem[@"advanced_rating_scores"], @"custom_lists":selecteditem[@"custom_lists"],  @"hidden_default":selecteditem[@"hidden_default"]} success:^(NSURLSessionTask *task, id responseObject) {
+    [manager PUT:@"https://anilist.co/api/animelist/" parameters:@{@"id":@(selectededitid), @"list_status":_minipopoverstatus.title, @"score":@(0), @"score_raw":@(_minipopoverscore.intValue), @"episodes_watched":@(_minipopoverepfield.intValue)} success:^(NSURLSessionTask *task, id responseObject) {
         [self loadlist:@(true)];
          [_minipopovereditbtn setEnabled:true];
         [_minieditpopover setBehavior:NSPopoverBehaviorTransient];
@@ -605,6 +605,7 @@
         if([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: unauthorized (401)"]){
             [Utility performTokenRefresh:self forSelector:@"performupdate" withObject:nil];
         }
+        NSLog(@"%@", error);
         [_minipopoverstatustext setStringValue:@"Error"];
     }];
 }
