@@ -1,0 +1,24 @@
+{
+  "images" : [
+    {
+      "idiom" : "mac"
+    },
+    {
+      "idiom" : "mac",
+      "filename" : "edit.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "mac",
+      "filename" : "exitx2.png",
+      "scale" : "2x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
+  }
+}

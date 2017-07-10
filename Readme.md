@@ -1,6 +1,6 @@
 # Nekomata
 ![screenshot](http://i.imgur.com/tKeYxJ4.png)
-Nekomata (猫又) is an open sourced AniList.co library manager.  In development, but basic functionality works.
+Nekomata (猫又) is an open sourced Kitsu (and AniList) library manager.  In development, fork of MAL Library.
 
 Requires latest SDK (10.12) and XCode 8 or later to compile. Deployment target is 10.10.
 
@@ -17,6 +17,8 @@ All the frameworks are included. Just build! Here are the frameworks that are us
 * Sparkle.framework
 * MASPreferences.framework
 * AFNetworking.framework
+* PXSourceList.framework
+* CocoaOniguruma.framework
  
 Licenses for these frameworks and related classes can be seen [here](https://github.com/Atelier-Shiori/Nekomata/wiki/Credits).
 
