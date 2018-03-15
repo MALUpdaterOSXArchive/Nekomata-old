@@ -1,26 +1,8 @@
-# Nekomata
-![screenshot](http://i.imgur.com/tKeYxJ4.png)
-Nekomata (猫又) is an open sourced Kitsu (and AniList) library manager.  In development, fork of MAL Library.
+# Note
+Nekomata is discontinued as I decided to add Kitsu and AniList support to MAL Library.
 
-Requires latest SDK (10.12) and XCode 8 or later to compile. Deployment target is 10.10.
+Here is the timeline:
+* Kitsu Support- Mid 2018
+* AniList Support - Fall 2018
 
-## How to Compile in XCode
-Warning: This won't work if you don't have a Developer ID installed. If you don't have one, obtain one by joining the Apple Developer Program or turn off code signing.
-
-1. Get the Source
-2. Copy ClientConstants-sample.m to ClientConstants.m. Copy your client id and secret key to the respective variables in ClientConstants.m. You can obtain an App Key [here](https://anilist.co/settings/developer/client/)
-3. Type 'xcodebuild' to build
-
-## Dependencies
-All the frameworks are included. Just build! Here are the frameworks that are used in this app:
-
-* Sparkle.framework
-* MASPreferences.framework
-* AFNetworking.framework
-* PXSourceList.framework
-* CocoaOniguruma.framework
- 
-Licenses for these frameworks and related classes can be seen [here](https://github.com/Atelier-Shiori/Nekomata/wiki/Credits).
-
-##License
-Unless stated, Source code is licensed under New BSD License
+You can follow the development of MAL Library [over here](https://github.com/Atelier-Shiori/MAL-Library)
